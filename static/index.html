@@ -1,0 +1,480 @@
+<!doctype html>
+<html lang="de">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+  <meta name="color-scheme" content="dark">
+  <meta name="theme-color" content="#140d09">
+  <title>Klartext · Dein Content-Arbeitsplatz</title>
+  <link rel="icon" href="/static/icon.svg" type="image/svg+xml">
+  <link rel="manifest" href="/static/manifest.json">
+  <link rel="apple-touch-icon" href="/static/icon-192.png">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-title" content="Klartext">
+  <script src="/static/theme-boot.js"></script>
+  <link rel="stylesheet" href="/static/tokens.css">
+  <link rel="stylesheet" href="/static/style.css">
+  <link rel="stylesheet" href="/static/shell.css">
+  <link rel="stylesheet" href="/static/roles.css">
+  <link rel="stylesheet" href="/static/theme.css">
+  <link rel="stylesheet" href="/static/studio.css">
+  <link rel="stylesheet" href="/static/preview.css">
+  <link rel="stylesheet" href="/static/planning.css">
+  <link rel="stylesheet" href="/static/instagram.css">
+  <link rel="stylesheet" href="/static/statistik.css">
+  <link rel="stylesheet" href="/static/team.css">
+  <link rel="stylesheet" href="/static/tasks.css">
+  <link rel="stylesheet" href="/static/review.css">
+  <link rel="stylesheet" href="/static/material.css">
+  <link rel="stylesheet" href="/static/today.css">
+  <link rel="stylesheet" href="/static/settings.css">
+  <link rel="stylesheet" href="/static/addvideo.css">
+  <script src="/static/request.js" defer></script>
+  <script src="/static/confirm.js" defer></script>
+  <script src="/static/toast.js" defer></script>
+  <script src="/static/library.js" defer></script>
+  <script src="/static/app.js" defer></script>
+  <script src="/static/editor_geometry.js" defer></script>
+  <script src="/static/caption_timing.js" defer></script>
+  <script src="/static/editor.js" defer></script>
+  <script src="/static/planning_dates.js" defer></script>
+  <script src="/static/pushsub.js" defer></script>
+  <script src="/static/instagram.js" defer></script>
+  <script src="/static/planning.js" defer></script>
+  <script src="/static/stage.js" defer></script>
+  <script src="/static/tasks.js" defer></script>
+  <script src="/static/review.js" defer></script>
+  <script src="/static/material.js" defer></script>
+  <script src="/static/statistik.js" defer></script>
+  <script src="/static/team.js" defer></script>
+  <script src="/static/requests.js" defer></script>
+  <script src="/static/finance.js" defer></script>
+  <script src="/static/automations.js" defer></script>
+  <script src="/static/today.js" defer></script>
+  <script src="/static/addvideo.js" defer></script>
+  <script src="/static/settings.js" defer></script>
+  <script src="/static/shell.js" defer></script>
+</head>
+<body>
+<a class="skipLink" href="#main">Zum Inhalt springen</a>
+
+<aside class="sidebar" aria-label="Navigation">
+  <div class="sidebarHead">
+    <a class="brand" href="#main" data-shell-route="today" aria-label="Klartext, zur Seite Heute">
+      <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 10v4M8 6v12M12 3v18M16 7v10M20 10v4"/></svg>
+      <span class="brandLabel">Klartext</span>
+    </a>
+    <button id="toggleSidebar" type="button" class="sidebarIconButton" aria-expanded="true" aria-label="Seitenleiste einklappen" title="Seitenleiste einklappen"><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="4" width="18" height="16" rx="2"/><path d="M9 4v16"/></svg></button>
+  </div>
+
+  <nav class="workspaceNav" aria-label="Arbeitsbereiche">
+    <button class="navItem" type="button" data-workspace="today" aria-pressed="false" aria-controls="structureWorkspace" title="Heute" aria-label="Heute"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="m3 11 9-8 9 8v10h-6v-7H9v7H3Z"/></svg><span>Heute</span></button>
+    <button class="navItem" type="button" data-workspace="projects" aria-pressed="false" aria-controls="structureWorkspace" title="Aufgaben" aria-label="Aufgaben"><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="4" width="18" height="16" rx="2"/><path d="M8 4v16M3 9h5M3 14h5M12 9h5M12 13h5"/></svg><span>Aufgaben</span></button>
+    <button class="navItem" type="button" data-workspace="studio" aria-pressed="false" aria-controls="studio" title="Studio" aria-label="Studio"><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="4" width="18" height="16" rx="2"/><path d="M6 14h4M13 14h5M6 17h7M16 17h2M8 8l3 2-3 2Z"/></svg><span>Studio</span></button>
+    <button class="navItem" type="button" data-workspace="material" aria-pressed="false" aria-controls="structureWorkspace" title="Material" aria-label="Material"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M3 6h6l2 3h10v11H3Z"/><path d="M3 6V4h7l2 2h8v3"/></svg><span>Material</span></button>
+    <button class="navItem" type="button" data-workspace="review" aria-pressed="false" aria-controls="structureWorkspace" title="Freigaben" aria-label="Freigaben"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M9 4H5v17h14V4h-4"/><rect x="9" y="2" width="6" height="4" rx="1"/><path d="m8 13 3 3 5-6"/></svg><span>Freigaben</span></button>
+    <button class="navItem" type="button" data-workspace="planning" aria-pressed="false" aria-controls="structureWorkspace" title="Kalender" aria-label="Kalender"><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="5" width="18" height="16" rx="2"/><path d="M7 3v4M17 3v4M3 10h18M7 14h3M14 14h3M7 18h3"/></svg><span>Kalender</span></button>
+    <details class="navMore" data-nav-more>
+      <summary class="navItem" title="Mehr"><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="5" cy="12" r="1.5"/><circle cx="12" cy="12" r="1.5"/><circle cx="19" cy="12" r="1.5"/></svg><span>Mehr</span></summary>
+      <button class="navItem" type="button" data-workspace="requests" aria-pressed="false" aria-controls="structureWorkspace" title="Anfragen" aria-label="Anfragen"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 5h16v11H8l-4 4z"/><path d="M12 8v5M9.5 10.5h5"/></svg><span>Anfragen</span></button>
+      <button class="navItem" type="button" data-workspace="team" aria-pressed="false" aria-controls="structureWorkspace" title="Team" aria-label="Team"><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="9" cy="8" r="3.5"/><path d="M2.5 20a6.5 6.5 0 0 1 13 0"/><path d="M16 4.5a3.5 3.5 0 0 1 0 7M18 20a6 6 0 0 0-3-5.2"/></svg><span>Team</span></button>
+      <button class="navItem" type="button" data-workspace="finance" aria-pressed="false" aria-controls="structureWorkspace" title="Finanzen" aria-label="Finanzen"><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="6" width="18" height="13" rx="2"/><path d="M3 10h18M7 15h4"/></svg><span>Finanzen</span></button>
+      <button class="navItem" type="button" data-workspace="automations" aria-pressed="false" aria-controls="structureWorkspace" title="Abläufe" aria-label="Abläufe"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M13 3 5 14h6l-1 7 8-11h-6z"/></svg><span>Abläufe</span></button>
+      <button class="navItem" type="button" data-workspace="statistik" aria-pressed="false" aria-controls="structureWorkspace" title="Statistik" aria-label="Statistik"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 20V11M10 20V5M16 20v-8M21 20H3"/></svg><span>Statistik</span></button>
+      <button class="navItem" type="button" data-workspace="settings" aria-pressed="false" aria-controls="structureWorkspace" title="Einstellungen" aria-label="Einstellungen"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 7h16M4 17h16"/><circle cx="9" cy="7" r="3"/><circle cx="15" cy="17" r="3"/></svg><span>Einstellungen</span></button>
+    </details>
+  </nav>
+</aside>
+
+<div class="appShell">
+  <header class="topbar">
+    <h1 class="topbarTitle"><strong id="topbarTitle">Heute</strong></h1>
+    <div class="topbarActions" data-topbar-actions><button type="button" class="btn" data-topbar-add-video hidden>Video hinzufügen</button><button type="button" class="btn" data-topbar-task hidden>Zur Aufgabe</button><button type="button" class="btn roleNote" data-role-note hidden></button></div>
+  </header>
+
+  <main id="main">
+    <section id="studio" class="studio" aria-label="Studio">
+    <nav class="studioTabs" aria-label="Studio-Bereiche">
+      <button class="studioTab isActive" type="button" data-workspace="transcribe" aria-pressed="true" aria-controls="form">Transkript</button>
+      <button class="studioTab" type="button" data-workspace="subtitles" aria-pressed="false" aria-controls="subtitleWorkspace">Untertitel</button>
+      <button class="studioTab" type="button" data-workspace="social" aria-pressed="false" aria-controls="captionPanel">Text</button>
+    </nav>
+    <aside class="studioLibrary" aria-label="Video-Bibliothek">
+  <nav class="libraryNavigation" aria-label="Video-Bibliothek">
+    <p class="structureNavLabel">Deine Bibliothek</p>
+    <button id="sidebarHome" class="sideNavButton" type="button" title="Videos ohne Projekt" aria-label="Videos ohne Projekt"><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="m10 9 5 3-5 3Z"/></svg><span>Videos ohne Projekt</span></button>
+    <button id="sidebarSearch" class="sideNavButton" type="button" title="Videos suchen"><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="10.5" cy="10.5" r="7"/><path d="m16 16 5 5"/></svg><span>Suchen</span></button>
+  </nav>
+  <div id="librarySearchPanel" class="field" hidden><label for="librarySearchInput">Videos suchen</label><input id="librarySearchInput" type="search" placeholder="Name des Videos …" autocomplete="off"></div>
+
+  <div class="libraryFolders">
+    <button id="newFolder" class="sideNavButton" type="button" title="Neues Projekt"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M13 19H3V5h6l2 3h10v5M18 15v7M14.5 18.5h7"/></svg><span>Neues Projekt</span></button>
+    <div id="folderList" role="list" aria-label="Deine Projekte"></div>
+  </div>
+  <section class="history" aria-labelledby="historyTitle" id="history">
+    <div class="sideSectionTitle">
+      <h2 id="historyTitle"><span id="libraryListLabel">Deine Videos</span></h2>
+    </div>
+    <div id="historyList"></div>
+    <p id="librarySelectionStatus" class="librarySelectionStatus" role="status" aria-live="polite"></p>
+    <p id="historyEmpty">Noch keine Videos.<br>Neue Videos erscheinen hier. Zieh sie in ein Projekt.</p>
+  </section>
+  <p id="libraryStatus" class="libraryStatus" role="status" aria-live="polite"></p>
+    </aside>
+    <div class="studioMain">
+    <div class="workspace">
+      <section class="source glassPanel" aria-label="Video auswählen und transkribieren">
+        <form id="form">
+          <label class="dropzone addVideoDrop" id="dropzone" for="file">
+            <input id="file" class="addVideoFile" type="file" accept=".mp4,.mov,.mp3,.wav,.m4a,.flac,.ogg,.webm" aria-label="Audio- oder Videodatei auswählen">
+            <strong id="fileTitle">Audio oder Video hier ablegen</strong>
+            <span id="fileInfo" class="status">Klicken und Datei auswählen</span>
+            <span class="dropzoneFormats">MP4, MOV, MP3, WAV, M4A, FLAC, OGG oder WebM</span>
+          </label>
+
+          <div class="formBottom">
+            <div class="configHeader"><h2>Transkription einstellen</h2><p class="status">Sprache, Genauigkeit und Sprecherprofil</p></div>
+            <div class="settings">
+              <div class="field fieldGroup">
+                <label for="language">Sprache</label>
+                <select id="language">
+                  <option value="auto">Automatisch erkennen</option>
+                  <option value="de" selected>Deutsch</option>
+                  <option value="en">Englisch</option>
+                  <option value="fr">Französisch</option>
+                  <option value="es">Spanisch</option>
+                  <option value="it">Italienisch</option>
+                  <option value="nl">Niederländisch</option>
+                  <option value="pl">Polnisch</option>
+                  <option value="pt">Portugiesisch</option>
+                  <option value="tr">Türkisch</option>
+                </select>
+              </div>
+              <div class="field fieldGroup">
+                <label for="model">Qualität</label>
+                <select id="model" aria-describedby="modelHint">
+                  <option value="tiny">Schnell</option>
+                  <option value="base">Kompakt</option>
+                  <option value="small" selected>Ausgewogen · empfohlen</option>
+                  <option value="medium">Gründlich</option>
+                </select>
+              </div>
+              <div class="field fieldGroup">
+                <label for="speaker">Sprecher</label>
+                <select id="speaker"><option value="">Ohne Sprecherprofil</option></select>
+              </div>
+            </div>
+
+            <details class="profileManager speakerManager">
+              <summary>
+                <span class="summaryIcon"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M16 21v-2a4 4 0 0 0-4-4H7a4 4 0 0 0-4 4v2M9.5 11a4 4 0 1 0 0-8 4 4 0 0 0 0 8ZM19 8v6M16 11h6"/></svg></span>
+                <span><strong>Sprecher &amp; Korrekturen</strong><small>Schreibweisen pro Stimme lernen</small></span>
+                <svg class="chevron" viewBox="0 0 24 24" aria-hidden="true"><path d="m9 6 6 6-6 6"/></svg>
+              </summary>
+              <div class="detailsBody">
+                <p>Gespeicherte Textkorrekturen helfen bei künftigen Videos dieses Sprechers.</p>
+                <div class="inlineForm speakerCreateRow">
+                  <div class="field"><input id="speakerName" aria-label="Name des neuen Sprechers" placeholder="Name des Sprechers" maxlength="100"></div>
+                  <button id="addSpeaker" class="btn" type="button">Sprecher hinzufügen</button>
+                </div>
+                <div id="correctionRows" class="field"></div>
+                <div class="inlineForm correctionActions">
+                  <button id="addCorrection" class="btn" type="button">Korrektur hinzufügen</button>
+                  <button id="saveCorrections" class="btn" type="button">Korrekturen speichern</button>
+                </div>
+                <p id="correctionStatus" class="status" role="status"></p>
+              </div>
+            </details>
+
+            <p class="modelHint status" id="modelHint">Gute Genauigkeit für die meisten Videos. Einmaliger Download: ca. 500 MB.</p>
+            <div class="startRow">
+              <span class="fileNote status" id="fileNote">Wähle zuerst eine Datei aus.</span>
+              <button class="btn isPrimary" id="start" type="submit" disabled>
+                <span id="startLabel">Transkribieren</span>
+                <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14m-6-6 6 6-6 6"/></svg>
+              </button>
+              <button class="btn isPrimary" id="nextSubtitles" type="button" hidden>Weiter zu Untertitel</button>
+            </div>
+          </div>
+        </form>
+      </section>
+
+      <div id="status" class="status glassPanel" role="status" aria-live="polite" hidden>
+        <div class="statusRow">
+          <span class="statusDot" aria-hidden="true"></span>
+          <div><span class="statusLabel">Verarbeitung</span><strong id="phase">Bereit, wenn du es bist.</strong></div>
+          <span id="percent"></span>
+        </div>
+        <progress id="progress" max="100" value="0" hidden aria-label="Verarbeitungsfortschritt"></progress>
+        <p id="message">Wähle ein Video aus, um zu beginnen.</p>
+        <button class="btn cancel" id="cancel" type="button" hidden>Verarbeitung abbrechen</button>
+      </div>
+
+      <section class="result glassPanel" id="result" aria-labelledby="resultTitle" hidden>
+        <div class="resultHeader">
+          <div><h2 id="resultTitle">Dein Transkript</h2><p id="resultMeta" class="status">Hier erscheint dein erkannter Text.</p></div>
+        </div>
+
+        <div id="mediaPanel" class="mediaPanel" hidden>
+          <div id="mediaHost"></div>
+          <canvas id="waveform" height="90" aria-label="Wellenform des Videos" hidden></canvas>
+          <div class="playbackTools">
+            <span id="mediaHint" class="status">Klicke im Lesemodus auf ein Wort, um dorthin zu springen.</span>
+            <label for="playbackRate">Tempo</label>
+            <div class="field"><select id="playbackRate">
+              <option value="0.75">0,75×</option>
+              <option value="1" selected>1×</option>
+              <option value="1.25">1,25×</option>
+              <option value="1.5">1,5×</option>
+              <option value="2">2×</option>
+            </select></div>
+          </div>
+        </div>
+
+        <p id="mediaMissing" class="editNote mediaMissing status" hidden>Für dieses ältere Transkript ist kein Video gespeichert.</p>
+        <div class="editTools actionRow">
+          <span id="saveStatus" class="status" role="status"></span>
+          <div class="modeSwitch" aria-label="Transkriptansicht">
+            <button id="readMode" class="btn" type="button" aria-pressed="false">Mitlesen</button>
+            <button id="editMode" class="btn" type="button" aria-pressed="true">Bearbeiten</button>
+          </div>
+          <button id="saveTranscript" class="btn" type="button">Text speichern</button>
+        </div>
+        <div class="editorArea">
+          <div id="reader" class="reader" hidden aria-label="Transkript mit Wortzeitstempeln"></div>
+          <div id="empty" class="empty emptyState">
+            <span class="emptyStateIcon"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6 3h8l4 4v14H6V3Z M14 3v5h4M9 12h6M9 16h4"/></svg></span>
+            <h3>Dein Text entsteht hier.</h3>
+            <p>Der erkannte Text erscheint während der Verarbeitung.<br>Danach kannst du ihn direkt bearbeiten.</p>
+          </div>
+          <textarea id="transcript" aria-label="Transkript bearbeiten" spellcheck="true" hidden></textarea>
+        </div>
+        <div class="resultFooter">
+          <span id="wordCount">0 Wörter</span>
+          <div>
+            <button id="copy" class="btn" type="button" disabled>
+              <svg viewBox="0 0 24 24" aria-hidden="true"><rect x="8" y="8" width="12" height="13" rx="2"/><path d="M16 8V3H3v13h5"/></svg>
+              Kopieren
+            </button>
+            <button id="download" class="btn" type="button" disabled>
+              <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3v12m-4-4 4 4 4-4M4 16v5h16v-5"/></svg>
+              TXT herunterladen
+            </button>
+          </div>
+        </div>
+        <p class="editNote status" id="editNote">Prüfe wichtige Stellen. Automatische Transkripte können Fehler enthalten.</p>
+      </section>
+    </div>
+
+    <section id="captionPanel" class="captionPanel glassPanel" aria-labelledby="captionTitle" hidden>
+      <div class="resultHeader">
+        <div><h2 id="captionTitle">Social-Media-Texte</h2><p class="status">Drei Varianten aus deinem korrigierten Transkript.</p></div>
+        <span class="chip">Lokale KI</span>
+      </div>
+      <div class="captionBody">
+        <div class="captionSettings">
+          <div>
+            <span class="controlLabel">Firma</span>
+            <input id="brandSelect" type="hidden" value="gymstar">
+            <div id="brandChoices" class="choiceGroup" role="group" aria-label="Firma"></div>
+          </div>
+          <div>
+            <span class="controlLabel">Format</span>
+            <input id="captionFormat" type="hidden" value="reel">
+            <div id="formatChoices" class="choiceGroup" role="group" aria-label="Format">
+              <button type="button" class="btn" data-value="reel" aria-pressed="true">Reel · Instagram</button>
+              <button type="button" class="btn" data-value="ad" aria-pressed="false">Anzeige · Werbung</button>
+            </div>
+          </div>
+          <div>
+            <span class="controlLabel">Länge</span>
+            <input id="captionLength" type="hidden" value="short">
+            <div id="lengthChoices" class="choiceGroup" role="group" aria-label="Länge">
+              <button type="button" class="btn" data-value="short" aria-pressed="true">Kurz</button>
+              <button type="button" class="btn" data-value="long" aria-pressed="false">Lang</button>
+            </div>
+          </div>
+        </div>
+
+        <details class="profileManager brandManager">
+          <summary>
+            <span class="summaryIcon"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="m20 13-7 7-9-9V4h7l9 9ZM8.5 8.5h.01"/></svg></span>
+            <span><strong>Eigene Firma hinzufügen</strong><small>Tonalität und Schreibregeln hinterlegen</small></span>
+            <svg class="chevron" viewBox="0 0 24 24" aria-hidden="true"><path d="m9 6 6 6-6 6"/></svg>
+          </summary>
+          <div class="detailsBody">
+            <div class="field"><label for="brandName">Firmenname</label><input id="brandName" maxlength="100" placeholder="Name deiner Firma"></div>
+            <div class="field"><label for="brandRules">Schreibregeln</label><textarea id="brandRules" placeholder="Tonalität, Ansprache und wichtige Begriffe"></textarea></div>
+            <button id="addBrand" class="btn" type="button">Firma speichern</button>
+          </div>
+        </details>
+
+        <div class="generateRow">
+          <p id="aiStatus" class="status" role="status">Lokales Schreibmodell wird geprüft …</p>
+          <button id="generate" class="btn isPrimary" type="button">
+            <svg viewBox="0 0 24 24" aria-hidden="true"><path d="m12 3 1.4 4.1L17.5 8.5l-4.1 1.4L12 14l-1.4-4.1-4.1-1.4 4.1-1.4L12 3ZM18 14l.8 2.2L21 17l-2.2.8L18 20l-.8-2.2L15 17l2.2-.8L18 14Z"/></svg>
+            3 Varianten generieren
+          </button>
+        </div>
+        <p id="captionStatus" class="status" role="status" aria-live="polite"></p>
+        <div id="variants"></div>
+        <button id="saveCaptions" type="button" class="btn" hidden>Varianten speichern</button>
+      </div>
+    </section>
+
+    <section id="subtitleWorkspace" class="subtitleWorkspace" aria-labelledby="subtitleEditorTitle" hidden>
+      <header class="editorHeader glassPanel">
+        <div><h2 id="subtitleEditorTitle">Untertitel gestalten</h2></div>
+        <div class="editorProjectPicker field"><label for="editorProject">Video</label><select id="editorProject"><option value="">Video auswählen …</option></select></div>
+        <div class="editorHeaderActions">
+          <button id="addSubtitleVideo" class="btn isQuiet" type="button">Ohne Aufgabe hochladen</button>
+          <input id="subtitleVideoFile" type="file" accept=".mp4,.mov,.webm" aria-label="Video für Untertitel hinzufügen" hidden>
+          <button id="undoEditor" class="btn isIcon" type="button" aria-label="Rückgängig" title="Rückgängig · Strg+Z" disabled>↶</button>
+          <button id="redoEditor" class="btn isIcon" type="button" aria-label="Wiederholen" title="Wiederholen · Strg+Umschalt+Z" disabled>↷</button>
+          <button id="saveSubtitleProject" class="btn" type="button" disabled>Speichern</button>
+          <details class="exportMenu">
+            <summary class="btn isPrimary">Exportieren</summary>
+            <div class="popover">
+              <fieldset id="exportFps" class="exportFpsChoices">
+                <legend>Bildrate</legend>
+                <label><input type="radio" name="exportFps" value="30" checked><span>30 FPS</span></label>
+                <label><input type="radio" name="exportFps" value="60"><span>60 FPS</span></label>
+              </fieldset>
+              <button id="exportVideo" type="button">Video mit Untertiteln (MP4)</button>
+              <button id="exportSrt" type="button">Untertiteldatei (SRT)</button>
+              <button id="exportVtt" type="button">Untertiteldatei (VTT)</button>
+            </div>
+          </details>
+        </div>
+      </header>
+      <p class="status exportHint" id="exportHint" hidden><span data-export-hint></span><button type="button" class="btn isQuiet" data-export-task hidden>Zur Aufgabe</button></p>
+      <div class="subtitleUploadFeedback"><p id="subtitleUploadStatus" role="status" aria-live="polite"></p><progress id="subtitleUploadProgress" max="100" value="0" aria-label="Video wird transkribiert" hidden></progress></div>
+      <div id="editorEmpty" class="editorEmpty glassPanel"><strong>Füge ein Video hinzu oder wähle eines aus.</strong><span>Wortgenaue Untertitel, Stile und Exporte entstehen vollständig lokal.</span></div>
+      <div id="editorStudio" class="editorStudio" hidden>
+        <aside class="editorRail glassPanel" aria-label="Untertitel und Phrasen"><div class="railHeading"><div><span>Phrasen</span><strong id="phraseCount">0</strong></div><button id="addPhrase" type="button" class="btn isIcon" aria-label="Phrase hinzufügen" title="Phrase an der weißen Linie hinzufügen">+</button></div><div id="phraseList" class="phraseList"></div></aside>
+        <section class="previewPanel glassPanel" aria-label="Videovorschau">
+          <button id="closeExpandedVideo" class="expandedClose" type="button" aria-label="Große Videovorschau schließen" title="Schließen · Esc" hidden><svg viewBox="0 0 24 24" aria-hidden="true"><path d="m6 6 12 12M18 6 6 18"/></svg></button>
+          <div class="previewToolbar"><label for="aspectRatio">Format</label><div class="field"><select id="aspectRatio"><option>9:16</option><option>16:9</option><option>1:1</option><option>4:5</option></select></div><button id="toggleSafeArea" type="button" class="btn" aria-pressed="true">Sicherheitsbereich</button><span id="editorSaveStatus">Nicht gespeichert</span><button id="expandVideo" class="btn previewExpandButton" type="button" aria-label="Video groß anzeigen" title="Video groß anzeigen" aria-pressed="false"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M8 3H3v5M16 3h5v5M21 16v5h-5M8 21H3v-5M3 3l6 6M21 3l-6 6M21 21l-6-6M3 21l6-6"/></svg></button></div>
+          <div class="previewCanvasArea">
+            <nav class="editorToolDock" aria-label="Video-Werkzeuge">
+              <button id="editorToolImage" type="button" data-editor-tool="image" aria-controls="editorToolPanelImage" aria-expanded="false" title="Bild hinzufügen"><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8" cy="8" r="1.5"/><path d="m3 17 5-5 4 4 4-6 5 7"/></svg><span>Bild</span></button>
+              <button id="editorToolMusic" type="button" data-editor-tool="music" aria-controls="editorToolPanelMusic" aria-expanded="false" title="Musik hinzufügen"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M9 18V5l11-2v13M9 9l11-2"/><ellipse cx="6" cy="18" rx="3" ry="2"/><ellipse cx="17" cy="16" rx="3" ry="2"/></svg><span>Musik</span></button>
+              <button id="editorToolVoiceover" type="button" data-editor-tool="voiceover" aria-controls="editorToolPanelVoiceover" aria-expanded="false" title="Voiceover hinzufügen"><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="9" y="2" width="6" height="12" rx="3"/><path d="M5 10v2a7 7 0 0 0 14 0v-2M12 19v3M8 22h8"/></svg><span>Voiceover</span></button>
+              <button id="editorToolVolume" type="button" data-editor-tool="volume" aria-controls="editorToolPanelVolume" aria-expanded="false" title="Lautstärke einstellen"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M3 9h4l5-4v14l-5-4H3ZM16 8a6 6 0 0 1 0 8M19 5a10 10 0 0 1 0 14"/></svg><span>Lautstärke</span></button>
+              <button id="editorToolText" type="button" data-editor-tool="text" aria-controls="editorToolPanelText" aria-expanded="false" title="Text hinzufügen"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 7V4h16v3M12 4v16M8 20h8"/></svg><span>Text</span></button>
+            </nav>
+            <div class="previewCanvasWrap">
+              <div id="videoStage" class="videoStage aspect-9-16"><video id="editorVideo" preload="metadata" playsinline></video><div id="safeArea" class="safeArea" aria-hidden="true"></div><div id="captionGuideX" class="captionGuide captionGuideX" aria-hidden="true" hidden></div><div id="captionGuideY" class="captionGuide captionGuideY" aria-hidden="true" hidden></div><div id="captionSelection" class="captionSelection" tabindex="0" role="group" aria-label="Untertitel verschieben oder an den Ecken skalieren"><div id="captionOverlay" class="captionOverlay"></div><button type="button" class="captionResizeHandle nw" data-resize-handle="nw" aria-label="Oben links skalieren"></button><button type="button" class="captionResizeHandle ne" data-resize-handle="ne" aria-label="Oben rechts skalieren"></button><button type="button" class="captionResizeHandle se" data-resize-handle="se" aria-label="Unten rechts skalieren"></button><button type="button" class="captionResizeHandle sw" data-resize-handle="sw" aria-label="Unten links skalieren"></button></div></div>
+            </div>
+            <section id="editorToolPanelImage" class="editorToolPanel" data-editor-tool-panel="image" role="region" aria-labelledby="editorToolImage" hidden>
+              <div class="editorToolPanelHeading"><h2>Bild hinzufügen</h2><button type="button" class="btn isQuiet isIcon" data-close-editor-tool aria-label="Bild-Werkzeug schließen">×</button></div>
+              <label for="editorImageFile">Lokales Bild auswählen</label><input id="editorImageFile" type="file" accept="image/*">
+              <p id="editorImageStatus" class="toolFileStatus" role="status">Noch kein Bild ausgewählt.</p><p class="controlHint">Noch ohne Wirkung: Bild, Musik, Voiceover und Zusatztext erscheinen weder in der Vorschau noch im exportierten Video.</p>
+            </section>
+            <section id="editorToolPanelMusic" class="editorToolPanel" data-editor-tool-panel="music" role="region" aria-labelledby="editorToolMusic" hidden>
+              <div class="editorToolPanelHeading"><h2>Musik hinzufügen</h2><button type="button" class="btn isQuiet isIcon" data-close-editor-tool aria-label="Musik-Werkzeug schließen">×</button></div>
+              <label for="editorMusicFile">Lokale Audiodatei auswählen</label><input id="editorMusicFile" type="file" accept="audio/*">
+              <p id="editorMusicFileStatus" class="toolFileStatus" role="status">Noch keine Musikspur ausgewählt.</p><p class="controlHint">Noch ohne Wirkung: Bild, Musik, Voiceover und Zusatztext erscheinen weder in der Vorschau noch im exportierten Video.</p>
+            </section>
+            <section id="editorToolPanelVoiceover" class="editorToolPanel" data-editor-tool-panel="voiceover" role="region" aria-labelledby="editorToolVoiceover" hidden>
+              <div class="editorToolPanelHeading"><h2>Voiceover hinzufügen</h2><button type="button" class="btn isQuiet isIcon" data-close-editor-tool aria-label="Voiceover-Werkzeug schließen">×</button></div>
+              <label for="editorVoiceoverFile">Lokale Sprachaufnahme auswählen</label><input id="editorVoiceoverFile" type="file" accept="audio/*">
+              <p id="editorVoiceoverFileStatus" class="toolFileStatus" role="status">Noch keine Sprachaufnahme ausgewählt.</p><p class="controlHint">Noch ohne Wirkung: Bild, Musik, Voiceover und Zusatztext erscheinen weder in der Vorschau noch im exportierten Video.</p>
+            </section>
+            <section id="editorToolPanelVolume" class="editorToolPanel" data-editor-tool-panel="volume" role="region" aria-labelledby="editorToolVolume" hidden>
+              <div class="editorToolPanelHeading"><h2>Lautstärke</h2><button type="button" class="btn isQuiet isIcon" data-close-editor-tool aria-label="Lautstärke-Werkzeug schließen">×</button></div>
+              <label for="editorVideoVolume">Video <output id="editorVideoVolumeValue" for="editorVideoVolume">100 %</output></label><input id="editorVideoVolume" type="range" min="0" max="100" step="1" value="100">
+              <label for="editorAddedAudioVolume">Hinzugefügtes Audio <output id="editorAddedAudioVolumeValue" for="editorAddedAudioVolume">100 %</output></label><input id="editorAddedAudioVolume" type="range" min="0" max="100" step="1" value="100">
+              <p class="controlHint">Die Lautstärke gilt nur für die Vorschau. Hinzugefügtes Audio kommt nicht ins exportierte Video.</p>
+            </section>
+            <section id="editorToolPanelText" class="editorToolPanel" data-editor-tool-panel="text" role="region" aria-labelledby="editorToolText" hidden>
+              <div class="editorToolPanelHeading"><h2>Zusätzlicher Text</h2><button type="button" class="btn isQuiet isIcon" data-close-editor-tool aria-label="Text-Werkzeug schließen">×</button></div>
+              <button id="addEditorTextLayer" class="btn" type="button">Textebene hinzufügen</button><div id="editorTextLayers" class="editorTextLayers" aria-label="Lokale Textebenen"></div>
+              <p class="controlHint">Noch ohne Wirkung: Bild, Musik, Voiceover und Zusatztext erscheinen weder in der Vorschau noch im exportierten Video.</p>
+            </section>
+          </div>
+          <div class="transport"><button id="editorPlay" class="btn isIcon" type="button" aria-label="Video abspielen" aria-keyshortcuts="Space" title="Video abspielen oder pausieren · Leertaste">▶</button><span id="editorCurrentTime">00:00.0</span><input id="editorScrubber" type="range" min="0" max="1" step="0.01" value="0" aria-label="Abspielposition"><span id="editorDuration">00:00.0</span><label for="timelineZoom">Zoom</label><input id="timelineZoom" type="range" min="1" max="5" step="0.25" value="1" aria-label="Zoom der Zeitleiste"></div>
+        </section>
+        <aside class="styleInspector glassPanel" aria-label="Untertitel-Eigenschaften">
+          <div class="inspectorTabs" role="tablist" aria-label="Untertitel-Einstellungen">
+            <button id="inspectorCaptionTab" type="button" role="tab" aria-selected="true" aria-controls="inspectorCaptionPanel" tabindex="0" class="isActive" data-inspector="caption">Untertitel</button>
+            <button id="inspectorPhraseTab" type="button" role="tab" aria-selected="false" aria-controls="inspectorPhrasePanel" tabindex="-1" data-inspector="phrase">Phrase</button>
+            <button id="inspectorHighlightTab" type="button" role="tab" aria-selected="false" aria-controls="inspectorHighlightPanel" tabindex="-1" data-inspector="highlight">Hervorheben</button>
+          </div>
+          <div class="inspectorScroll">
+            <div id="inspectorCaptionPanel" role="tabpanel" aria-labelledby="inspectorCaptionTab">
+            <section class="inspectorSection"><h2>Typografie</h2><label class="field">Schrift<select id="styleFont"><option>Arial</option></select></label><p id="fontVariantHint" class="controlHint">Die verfügbaren Ausführungen passen sich der Schrift an.</p><div class="fieldGrid"><label class="field">Stärke<select id="styleWeight"><option value="700">Fett</option></select></label><label class="field">Ausführung<select id="styleSlant"><option value="normal">Normal</option><option value="italic">Kursiv</option></select></label></div><label class="field">Größe<input id="styleSize" type="number" min="20" max="180" value="72"></label><div class="fieldGrid"><label class="field">Textfarbe<input id="styleTextColor" type="color" value="#ffffff"></label><label class="field">Aktives Wort<input id="styleActiveColor" type="color" value="#b6e63c"></label></div></section>
+            <section class="inspectorSection"><h2>Kontur &amp; Schatten</h2><div class="fieldGrid"><label>Kontur<input id="styleOutline" type="range" min="0" max="12" value="3"></label><label>Schatten<input id="styleShadow" type="range" min="0" max="24" value="8"></label></div><label class="switchRow check">Hintergrund <input id="styleBackground" type="checkbox"></label></section>
+            <section class="inspectorSection"><h2>Layout</h2><div class="segmented" id="styleAlignment" role="group" aria-label="Textausrichtung"><button type="button" class="btn" data-value="left" aria-pressed="false">Links</button><button type="button" class="btn" data-value="center" aria-pressed="true">Zentriert</button><button type="button" class="btn" data-value="right" aria-pressed="false">Rechts</button></div><div class="fieldGrid"><label class="field">Wörter/Zeile<input id="wordsPerLine" type="number" min="1" max="12" value="5"></label><label class="field">Zeilen<input id="maxLines" type="number" min="1" max="4" value="2"></label></div><label class="field">Animation<select id="styleTransition"><option value="none">Keine</option><option value="fade">Einblenden</option><option value="pop">Aufploppen</option><option value="slide">Aufsteigen</option></select></label></section>
+            <section class="inspectorSection"><h2>Stilvorlage</h2><div class="templateRow"><div class="field"><input id="templateName" placeholder="Name der Vorlage" maxlength="60"></div><button id="saveTemplate" type="button" class="btn">Speichern</button></div><div id="templateList" class="templateList"></div></section>
+            </div>
+            <div id="inspectorPhrasePanel" role="tabpanel" aria-labelledby="inspectorPhraseTab" hidden>
+              <section class="inspectorSection phraseEditor"><h2>Ausgewählte Phrase</h2><label class="field">Text<textarea id="phraseText" rows="4" lang="de" spellcheck="true"></textarea></label>
+                <p class="controlHint">Wort anklicken für Hervorhebung und Größe. Doppelklick zum Korrigieren.</p>
+                <div id="phraseWordHighlights" class="phraseWordHighlights field" role="group" aria-label="Wörter der ausgewählten Phrase"></div>
+                <div id="selectedWordOptions" class="selectedWordOptions" hidden>
+                  <strong id="selectedWordLabel"></strong>
+                  <label class="switchRow check">Hervorheben<input id="selectedWordHighlight" type="checkbox"></label>
+                  <label class="switchRow check">Größer anzeigen<input id="selectedWordEnlarged" type="checkbox"></label>
+                  <button id="editSelectedWord" class="btn" type="button">Wort bearbeiten</button>
+                  <div id="wordSuggestions" class="wordSuggestions"></div>
+                </div>
+                <div class="proofreadingTools"><button id="proofreadSubtitles" class="btn" type="button">Sprache prüfen</button><span id="proofreadingStatus" class="status" role="status" aria-live="polite">Deutsch · englische Wörter berücksichtigt</span></div>
+                <label class="switchRow check" for="individualGeometry"><span><strong>Individuelle Position</strong><small>Nur diese Phrase vom Videolayout lösen</small></span><input id="individualGeometry" type="checkbox"></label>
+                <div class="fieldGrid"><label class="field">X-Position (%)<input id="phraseX" type="number" min="0" max="100" step="0.1"></label><label class="field">Y-Position (%)<input id="phraseY" type="number" min="0" max="100" step="0.1"></label></div>
+                <p class="controlHint">Horizontal positionieren</p><div class="segmented" role="group" aria-label="Horizontale Phrasenposition"><button type="button" class="btn" data-phrase-x="left" aria-pressed="false">Links</button><button type="button" class="btn" data-phrase-x="center" aria-pressed="true">Mitte</button><button type="button" class="btn" data-phrase-x="right" aria-pressed="false">Rechts</button></div>
+                <p class="controlHint">Vertikal positionieren</p><div class="segmented" role="group" aria-label="Vertikale Phrasenposition"><button type="button" class="btn" data-phrase-y="top" aria-pressed="false">Oben</button><button type="button" class="btn" data-phrase-y="middle" aria-pressed="false">Mitte</button><button type="button" class="btn" data-phrase-y="bottom" aria-pressed="false">Unten</button></div>
+                <div class="fieldGrid"><label class="field">Start<input id="phraseStart" type="number" min="0" step="0.01"></label><label class="field">Ende<input id="phraseEnd" type="number" min="0" step="0.01"></label></div><div class="buttonRow"><button id="splitPhrase" type="button" class="btn">In der Mitte teilen</button><button id="mergePhrase" type="button" class="btn">Mit nächster verbinden</button></div><button id="deletePhrase" type="button" class="btn isDanger">Phrase löschen</button>
+              </section>
+            </div>
+            <div id="inspectorHighlightPanel" role="tabpanel" aria-labelledby="inspectorHighlightTab" hidden>
+              <section class="inspectorSection glowControls"><h2>Leuchten</h2><button id="highlightGlow" class="btn" type="button" aria-pressed="false">Leuchten einschalten</button><label for="highlightGlowStrength">Stärke <output id="highlightGlowValue" for="highlightGlowStrength">12</output></label><input id="highlightGlowStrength" type="range" min="0" max="40" step="1" value="12" disabled><p class="controlHint">Weiches Leuchten um hervorgehobene Wörter. Wird auch im MP4 mitgerendert.</p></section>
+              <section class="inspectorSection"><h2>Hervorhebung</h2><label class="switchRow check">Aktives Wort<input id="activeWord" type="checkbox" checked></label><label class="field">Farbe des aktiven Worts<input id="highlightActiveColor" type="color" value="#b6e63c"></label><label class="switchRow check">Schlüsselwörter<input id="highlightKeywords" type="checkbox"></label><label class="field">Schlüsselwortfarbe<input id="keywordColor" type="color" value="#ffd166"></label><p class="controlHint">Gilt für die im Video hinterlegten Schlüsselwörter.</p><label class="field">Effekt<select id="highlightEffect"><option value="color">Farbe</option><option value="underline">Unterstreichen</option><option value="background">Hinterlegen</option></select></label><div class="fieldGrid"><label class="field">Hervorhebungs-Schrift<select id="highlightFont"><option>Arial</option></select></label><label class="field">Stärke<select id="highlightWeight"><option value="700">Fett</option></select></label></div><label class="field">Ausführung<select id="highlightSlant"><option value="normal">Normal</option><option value="italic">Kursiv</option></select></label><div class="fieldGrid"><label class="field">Hervorhebungsfarbe<input id="highlightTextColor" type="color" value="#ffd166"></label><label class="field">Hintergrundfarbe<input id="highlightBackgroundColor" type="color" value="#ffd166"></label></div></section>
+            </div>
+          </div>
+        </aside>
+        <section id="editorTimeline" class="editorTimeline glassPanel" aria-label="Zeitleiste der Untertitel"><div class="timelineHeading"><span class="status">Phrase ziehen zum Verschieben · Kanten ziehen für Start und Ende</span><label class="field">Raster<select id="timelinePrecision"><option value="0.05">Sekunden · 0,05 s</option><option value="0.03333333333333333">Einzelbilder · 30 fps</option><option value="0.04">Einzelbilder · 25 fps</option></select></label></div><div class="timelineViewport" tabindex="0" aria-label="Zeitleiste waagrecht scrollen"><div id="timelineTrack" class="timelineTrack"><div class="timelineRuler" id="timelineRuler" aria-label="Zeitmarkierungen"></div><div id="timelineCaptionTrack" class="timelineCaptionTrack" aria-label="Untertitelspuren"></div><div id="timelineFilmstrip" class="timelineFilmstrip" role="img" aria-label="Videovorschau"></div><div id="timelinePlayhead" class="timelinePlayhead" aria-hidden="true"></div></div></div></section>
+      </div>
+      <p id="editorStatus" class="editorStatus" role="status" aria-live="polite"></p>
+    </section>
+
+    </div>
+    </section>
+    <section id="structureWorkspace" aria-label="Arbeitsbereich" hidden></section>
+  </main>
+</div>
+
+<nav class="tabBar" aria-label="Hauptbereiche" data-tab-bar>
+  <button class="tabBarButton" type="button" data-shell-route="today"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="m3 11 9-8 9 8v10h-6v-7H9v7H3Z"/></svg><span>Heute</span></button>
+  <button class="tabBarButton" type="button" data-shell-route="projects"><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="4" width="18" height="16" rx="2"/><path d="M8 4v16M3 9h5M3 14h5M12 9h5M12 13h5"/></svg><span>Aufgaben</span></button>
+  <button class="tabBarButton" type="button" data-shell-route="review"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M9 4H5v17h14V4h-4"/><rect x="9" y="2" width="6" height="4" rx="1"/><path d="m8 13 3 3 5-6"/></svg><span>Freigaben</span></button>
+  <button class="tabBarButton" type="button" data-shell-route="planning"><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="5" width="18" height="16" rx="2"/><path d="M7 3v4M17 3v4M3 10h18M7 14h3M14 14h3M7 18h3"/></svg><span>Kalender</span></button>
+  <button class="tabBarButton" type="button" data-tab-more aria-expanded="false" aria-controls="tabSheet"><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="5" cy="12" r="1.5"/><circle cx="12" cy="12" r="1.5"/><circle cx="19" cy="12" r="1.5"/></svg><span>Mehr</span></button>
+</nav>
+<div id="tabSheet" class="tabSheet" data-tab-sheet hidden>
+  <button type="button" data-shell-route="studio"><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="4" width="18" height="16" rx="2"/><path d="M6 14h4M13 14h5M6 17h7M16 17h2M8 8l3 2-3 2Z"/></svg><span>Studio</span></button>
+  <button type="button" data-shell-route="material"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M3 6h6l2 3h10v11H3Z"/><path d="M3 6V4h7l2 2h8v3"/></svg><span>Material</span></button>
+  <button type="button" data-shell-route="requests"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 5h16v11H8l-4 4z"/><path d="M12 8v5M9.5 10.5h5"/></svg><span>Anfragen</span></button>
+  <button type="button" data-shell-route="team"><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="9" cy="8" r="3.5"/><path d="M2.5 20a6.5 6.5 0 0 1 13 0"/><path d="M16 4.5a3.5 3.5 0 0 1 0 7M18 20a6 6 0 0 0-3-5.2"/></svg><span>Team</span></button>
+  <button type="button" data-shell-route="finance"><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="6" width="18" height="13" rx="2"/><path d="M3 10h18M7 15h4"/></svg><span>Finanzen</span></button>
+  <button type="button" data-shell-route="automations"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M13 3 5 14h6l-1 7 8-11h-6z"/></svg><span>Abläufe</span></button>
+  <button type="button" data-shell-route="statistik"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 20V11M10 20V5M16 20v-8M21 20H3"/></svg><span>Statistik</span></button>
+  <button type="button" data-shell-route="settings"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 7h16M4 17h16"/><circle cx="9" cy="7" r="3"/><circle cx="15" cy="17" r="3"/></svg><span>Einstellungen</span></button>
+</div>
+
+<div id="folderDialog" class="folderDialog" role="dialog" aria-modal="true" aria-labelledby="folderDialogTitle" hidden>
+  <form id="folderForm" class="folderDialogContent">
+    <h2 id="folderDialogTitle" tabindex="-1">Neues Projekt</h2>
+    <div class="field"><label for="folderName">Name des Projekts</label><input id="folderName" required maxlength="100" autocomplete="off"></div>
+    <div class="folderDialogActions"><button id="cancelFolder" class="btn" type="button">Abbrechen</button><button id="saveFolder" class="btn isPrimary" type="submit">Speichern</button></div>
+  </form>
+</div>
+<div id="folderMenu" class="folderMenu" role="menu" aria-label="Projekt verwalten" hidden>
+  <button type="button" role="menuitem" data-folder-action="rename">Projekt umbenennen</button>
+  <button type="button" role="menuitem" data-folder-action="color">Projektfarbe</button>
+  <button type="button" role="menuitem" data-folder-action="share">Projekt als ZIP herunterladen</button>
+  <button type="button" role="menuitem" data-folder-action="delete" class="folderDelete">Projekt löschen</button>
+</div>
+<input id="folderColorInput" type="color" value="#739cff" class="srOnly" tabindex="-1" aria-label="Projektfarbe wählen">
+</body>
+</html>

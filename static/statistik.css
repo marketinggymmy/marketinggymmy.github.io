@@ -1,0 +1,6 @@
+/* Statistik: Rahmen in Kartenfarbe aus tokens.css; das Dashboard im Iframe behält sein eigenes Aussehen. */
+.statistikWorkspace{display:grid;gap:var(--s4);min-width:0}
+.statistikHeading{display:flex;justify-content:space-between;align-items:center;gap:var(--s3);flex-wrap:wrap}
+.statistikHeading .btn{margin-left:auto;text-decoration:none}
+.statistikFrameWrap{min-width:0;padding:0;overflow:hidden;border-radius:var(--r-card)}
+.statistikFrame{display:block;width:100%;height:calc(100dvh - 190px);min-height:560px;border:0}

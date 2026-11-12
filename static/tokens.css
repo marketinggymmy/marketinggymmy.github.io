@@ -1,0 +1,173 @@
+/* Stempeluhr-Look (Block N, Spec 4.1): Kaffee ist der Standard. html[data-bg] tauscht Grund, Lichtflecken und Flächen, html.light die Text- und Glaswerte. */
+:root{
+  --text:#f3ede7;
+  /* Kontrast vor Stempeluhr-Wert (Spec 4.7): .58 schafft auf dem Lichtfleck von Meer und Kaffee keine 4,5:1, .7 schon. */
+  --muted:rgba(243,237,231,.7);
+  --text-dim:#7d746d;
+  --line:rgba(255,255,255,.08);
+  --line-strong:rgba(255,255,255,.14);
+  /* Feldrahmen 3:1 gegen die Glas-Karte über dem hellsten Lichtfleck (WCAG 1.4.11). */
+  --line-field:rgba(255,255,255,.44);
+  --accent:#3b8dff;
+  --accent-soft:#6aa8ff;
+  /* Text-Varianten: 4,5:1 auf jeder Glas-Karte und direkt auf dem hellsten Lichtfleck (Text auf der Seite); die Flächen behalten die Stempeluhr-Farben. */
+  --accent-text:#8cbcff;
+  /* Dunkles Ende des Primärknopfs wie .locnow der Stempeluhr: weiße Schrift erreicht 4,5:1. */
+  --accent-deep:#1f6fe0;
+  --on-accent:#ffffff;
+  --deep:#1f4f8f;
+  --ok:#8cc63f;--ok-text:#9ed35a;
+  --warn:#f0a03c;--warn-text:#f3ae52;
+  --danger:#e8667e;--danger-text:#f7a8b5;
+  /* Glas wie .card, ::before und .panel der Stempeluhr: Karten ohne blur, Leisten, Sheets und Toasts mit blur. */
+  --glass:linear-gradient(180deg,rgba(32,26,22,.4),rgba(10,8,7,.5));
+  --glass-edge:linear-gradient(160deg,rgba(255,255,255,.42),rgba(255,255,255,.07) 30%,rgba(255,255,255,.03) 62%,rgba(255,255,255,.22));
+  --glass-bar:linear-gradient(180deg,rgba(40,31,25,.82),rgba(22,17,14,.9));
+  --bg-deep:rgba(0,0,0,.45);
+  --font:-apple-system,BlinkMacSystemFont,"SF Pro Text","Segoe UI",Roboto,sans-serif;
+  --s1:4px;--s2:8px;--s3:12px;--s4:16px;--s5:24px;--s6:32px;--s7:48px;
+  --r-control:8px;--r-field:12px;--r-tile:16px;--r-card:22px;--r-dialog:28px;--r-pill:999px;
+  --h-control:40px;--h-touch:44px;--topbar:56px;--sidebar:240px;--sidebar-collapsed:64px;
+  /* Two content widths: lists and tables of the Mehr pages, forms of the settings; the work pages use the full width. */
+  --page-max:1200px;--page-narrow:720px;
+  --ease:cubic-bezier(.16,1,.3,1);
+  /* Zeichenfarben der Freigabe, Reihenfolge wie COLORS in review.js. */
+  --draw-red:#ff5252;--draw-yellow:#ffd54f;--draw-blue:#40c4ff;
+  /* Aliasse der alten Namen, damit die Seiten-CSS unverändert bleibt; --glass ist seit Block N der Karten-Verlauf. */
+  --night:var(--bg);--abyss:var(--bg-deep);--glass-solid:var(--surface);--glass-raised:var(--surface-2);--glass-hover:var(--surface-hover);
+  --border:var(--line);--hairline:var(--line);--border-strong:var(--line-strong);
+  --electric:var(--accent);--electric-bright:var(--accent-soft);--cyan:var(--text);--ice:var(--text);--faint:var(--text-dim);--success:var(--ok);
+  --shadow:0 24px 80px rgba(0,0,0,.45);
+  --scrim:rgba(0,0,0,0.6);
+  --structure-canvas:var(--bg);--structure-panel:var(--surface);--structure-control:var(--surface-2);--structure-selected:var(--surface-hover);--structure-rule:var(--line);--structure-foreground:var(--text);--structure-secondary:var(--muted);--structure-radius:var(--r-card);
+  --workspace-gutter:16px;
+  --swatch-text:#ffffff;--swatch-shadow:0 1px 2px rgba(0,0,0,.5);--swatch-on:var(--text);
+  color-scheme:dark;font-family:var(--font);font-synthesis:none;font-variant-numeric:tabular-nums;color:var(--text);
+}
+
+/* Die neun Hintergründe aus BGS der Stempeluhr (extras.js): Grundfarbe, Lichtflecken und die deckenden Flächen darüber (5, 9 und 13 % Weiß). */
+:root,html[data-bg="kaffee"],.themeSwatch[data-swatch="kaffee"]{--bg:#140d09;--bg-image:radial-gradient(90% 45% at 65% 5%,#6b3d1c 0,rgba(107,61,28,0) 70%),radial-gradient(70% 40% at 5% 45%,#3d2615 0,rgba(61,38,21,0) 70%),radial-gradient(80% 45% at 95% 78%,#40230f 0,rgba(64,35,15,0) 70%);--surface:#201915;--surface-2:#29231f;--surface-hover:#332c29}
+html[data-bg="nacht"],.themeSwatch[data-swatch="nacht"]{--bg:#070b16;--bg-image:radial-gradient(90% 45% at 65% 5%,#1d3a6b 0,rgba(29,58,107,0) 70%),radial-gradient(70% 40% at 5% 45%,#15233d 0,rgba(21,35,61,0) 70%),radial-gradient(80% 45% at 95% 78%,#1a1f4a 0,rgba(26,31,74,0) 70%);--surface:#131722;--surface-2:#1d212b;--surface-hover:#272b34}
+html[data-bg="wald"],.themeSwatch[data-swatch="wald"]{--bg:#07110b;--bg-image:radial-gradient(90% 45% at 65% 5%,#1f5132 0,rgba(31,81,50,0) 70%),radial-gradient(70% 40% at 5% 45%,#163322 0,rgba(22,51,34,0) 70%),radial-gradient(80% 45% at 95% 78%,#28401a 0,rgba(40,64,26,0) 70%);--surface:#131d17;--surface-2:#1d2621;--surface-hover:#27302b}
+html[data-bg="beere"],.themeSwatch[data-swatch="beere"]{--bg:#120814;--bg-image:radial-gradient(90% 45% at 65% 5%,#5a1f5e 0,rgba(90,31,94,0) 70%),radial-gradient(70% 40% at 5% 45%,#36183d 0,rgba(54,24,61,0) 70%),radial-gradient(80% 45% at 95% 78%,#4a1530 0,rgba(74,21,48,0) 70%);--surface:#1e1420;--surface-2:#271e29;--surface-hover:#312833}
+html[data-bg="meer"],.themeSwatch[data-swatch="meer"]{--bg:#051214;--bg-image:radial-gradient(90% 45% at 65% 5%,#0f5257 0,rgba(15,82,87,0) 70%),radial-gradient(70% 40% at 5% 45%,#0d3338 0,rgba(13,51,56,0) 70%),radial-gradient(80% 45% at 95% 78%,#123c52 0,rgba(18,60,82,0) 70%);--surface:#121e20;--surface-2:#1c2729;--surface-hover:#263133}
+html[data-bg="stein"],.themeSwatch[data-swatch="stein"]{--bg:#0e0f10;--bg-image:radial-gradient(90% 45% at 65% 5%,#3a3d42 0,rgba(58,61,66,0) 70%),radial-gradient(70% 40% at 5% 45%,#24272b 0,rgba(36,39,43,0) 70%);--surface:#1a1b1c;--surface-2:#242526;--surface-hover:#2d2e2f}
+html[data-bg="schwarz"],.themeSwatch[data-swatch="schwarz"]{--bg:#000000;--bg-image:none;--surface:#0d0d0d;--surface-2:#171717;--surface-hover:#212121}
+html[data-bg="dunkel"],.themeSwatch[data-swatch="dunkel"]{--bg:#1c1c1e;--bg-image:radial-gradient(90% 45% at 65% 5%,#2c2c30 0,rgba(44,44,48,0) 70%);--surface:#272729;--surface-2:#303032;--surface-hover:#3a3a3b}
+html[data-bg="hell"],.themeSwatch[data-swatch="hell"]{--bg:#f2f2f7;--bg-image:radial-gradient(90% 45% at 65% 5%,#ffffff 0,rgba(255,255,255,0) 70%),radial-gradient(80% 45% at 5% 70%,#e6e9f2 0,rgba(230,233,242,0) 70%)}
+/* Heller Modus (Light), Werte aus html.light der Stempeluhr; Text-Tokens dunkler, bis AA auf der Karte über dem dunkelsten Fleck steht. */
+html.light{color-scheme:light;--text:#1c1c1e;--muted:rgba(28,28,30,.66);--text-dim:#8e8e93;--line:rgba(0,0,0,.08);--line-strong:rgba(0,0,0,.14);--line-field:rgba(0,0,0,.46);--accent-text:#175cc4;--deep:#cfe0ff;--ok-text:#356b0a;--warn-text:#9a5200;--danger-text:#b3263f;--glass:linear-gradient(180deg,rgba(255,255,255,.85),rgba(255,255,255,.65));--glass-edge:linear-gradient(160deg,rgba(255,255,255,1),rgba(0,0,0,.06) 40%,rgba(0,0,0,.04) 60%,rgba(0,0,0,.1));--glass-bar:linear-gradient(180deg,rgba(250,250,252,.92),rgba(242,242,247,.96));--bg-deep:rgba(0,0,0,.06);--surface:#ffffff;--surface-2:#ebebf0;--surface-hover:#e2e2e8;--shadow:0 24px 80px rgba(0,0,0,.18);--scrim:rgba(0,0,0,.25);--swatch-on:var(--accent-text)}
+/* Das Light-Farbfeld trägt dunkle Schrift wie .swatch.lightsw der Stempeluhr. */
+.themeSwatch[data-swatch="hell"]{--swatch-text:#1c1c1e;--swatch-shadow:none}
+/* Der Grund liegt fest unter dem Scrollen; html und body malen sonst nichts, damit der Verlauf die ganze Fläche füllt. */
+body{background:var(--bg-image),var(--bg);background-attachment:fixed}
+
+:focus-visible{outline:2px solid var(--accent-text);outline-offset:2px}
+/* Dialogs and headings that only take focus from script (tabindex -1) get no ring around the whole card (spec 4.7). */
+dialog:focus-visible,:is(h1,h2,h3)[tabindex="-1"]:focus-visible{outline:none}
+/* A scroll box that takes the focus draws its ring inside, so a clipping card never hides it (WCAG 2.4.7). */
+.scrollBox:focus-visible{outline-offset:-2px}
+/* Controls take the page font and show they are clickable; there are no other global element rules. */
+:is(button,input,select,textarea){font:inherit}
+:is(button,select,summary){cursor:pointer;touch-action:manipulation}
+::placeholder{color:var(--muted)}
+::selection{background:var(--deep);color:var(--text)}
+/* The one place that enforces [hidden]; no page needs its own [hidden] rule. */
+[hidden]{display:none!important}
+
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:var(--s2);min-height:var(--h-control);padding:0 var(--s4);border:1px solid var(--line);border-radius:var(--r-control);background:transparent;color:var(--text);font:inherit;font-size:14px;font-weight:500;line-height:1.2;cursor:pointer;transition:background .15s var(--ease),border-color .15s var(--ease)}
+.btn:hover{background:var(--surface-hover);border-color:var(--line-strong)}
+.btn.isPrimary{background:var(--accent);border-color:var(--accent);color:var(--bg);font-weight:600}
+.btn.isPrimary:hover{background:var(--accent-soft);border-color:var(--accent-soft)}
+.btn.isDanger{color:var(--danger-text)}
+.btn.isQuiet{border-color:transparent}
+/* A square button for one glyph or icon, already 44 px on every pointer. */
+.btn.isIcon{width:var(--h-touch);min-height:var(--h-touch);padding:0}
+/* Toggle and choice buttons show their chosen state with aria-pressed. */
+.btn[aria-pressed="true"]{background:var(--surface-hover);border-color:var(--accent)}
+.btn:disabled{opacity:.45;cursor:not-allowed}
+/* A file input stays a hidden 1 px field; its label button shows the focus instead. */
+.btn>input[type=file]{position:absolute;width:1px;height:1px;opacity:0}
+.btn:has(input[type=file]:focus-visible){outline:2px solid var(--accent-text);outline-offset:2px}
+
+.field{display:grid;gap:6px;min-width:0}
+.field>span,.field>label{font-size:12px;font-weight:500;color:var(--muted)}
+/* Every field of every page, the studio and the review overlay included, takes its look from here. */
+.field :is(input:not([type=file]),select,textarea){width:100%;min-height:var(--h-control);padding:0 var(--s3);border:1px solid var(--line-field);border-radius:var(--r-control);background:var(--surface-2);color:var(--text);font:inherit;font-size:14px}
+.field textarea:not([type=file]){padding:var(--s2) var(--s3);line-height:1.45}
+.field :is(input:not([type=file]),select,textarea):hover:not(:disabled){background:var(--surface-hover)}
+/* Same specificity as the field rule above and later in the file, so the error token wins. */
+.field input[aria-invalid="true"]{border-color:var(--danger)}
+.field :is(input,select,textarea):disabled{opacity:.45;cursor:not-allowed}
+
+.chip{display:inline-flex;align-items:center;gap:6px;height:22px;padding:0 var(--s2);border-radius:var(--r-control);background:var(--surface-2);font-size:12px;font-weight:500;line-height:1;color:var(--text);white-space:nowrap}
+.chip::before{content:"";flex:none;width:6px;height:6px;border-radius:50%;background:var(--stage-color,var(--muted))}
+/* Stage and status colours, set once: the chip dot and the stage ladder of the task panel read them. */
+:is([data-stage="raw"],[data-status="open"],[data-status="draft"]){--stage-color:var(--text-dim)}
+[data-stage="subtitles"]{--stage-color:var(--text)}
+:is([data-stage="review"],[data-stage="changes"],[data-status="in_review"],[data-status="changes"]){--stage-color:var(--warn)}
+:is([data-stage="approved"],[data-stage="planned"],[data-status="approved"],[data-status="planned"],[data-status="accepted"]){--stage-color:var(--accent)}
+:is([data-stage="published"],[data-status="posted"]){--stage-color:var(--accent)}
+[data-status="declined"]{--stage-color:var(--danger)}
+
+.due{display:inline-flex;align-items:center;gap:var(--s1);font-size:12px;font-weight:500;color:var(--muted)}
+.due[data-due="overdue"]{color:var(--danger-text)}
+.due[data-due="soon"]{color:var(--warn-text)}
+.due svg{width:12px;height:12px}
+.initial{display:inline-grid;place-items:center;width:24px;height:24px;border-radius:999px;background:var(--surface-2);color:var(--text);font-size:12px;font-weight:600}
+/* Anchor for the spoken .srOnly text inside: without it the text escapes scrolling boxes and widens the page. */
+.due,.initial{position:relative}
+
+.card{background:var(--surface);border:1px solid var(--line);border-radius:var(--r-card);padding:var(--s4)}
+
+.check{display:inline-flex;align-items:center;gap:var(--s2);font-size:14px}
+/* Specificity 0,2,1 beats the size rules of the studio inspector. */
+.check input[type=checkbox]{flex:none;width:20px;height:20px;min-height:0;margin:0;padding:0;accent-color:var(--accent)}
+
+.tableWrap{overflow-x:auto;border:1px solid var(--line);border-radius:var(--r-card);background:var(--surface)}
+.table{width:100%;border-collapse:collapse;font-size:14px}
+.table th{font-size:12px;font-weight:500;color:var(--muted);text-align:left;padding:var(--s2) var(--s3);border-bottom:1px solid var(--line)}
+.table td{padding:var(--s2) var(--s3);border-bottom:1px solid var(--line);vertical-align:middle}
+.table tbody tr:last-child :is(th,td){border-bottom:0}
+.table .num{text-align:right;font-variant-numeric:tabular-nums}
+
+.pageIntro{margin:0;font-size:14px;color:var(--muted)}
+/* An empty status after the intro takes no grid row, so it adds no second gap; it stays a live region (no display:none). */
+.pageIntro~.status:empty{position:absolute}
+
+/* input.srOnly[type] (0,2,1) stays hidden inside a .field too. */
+.srOnly,input.srOnly[type]{position:absolute;width:1px;height:1px;min-height:0;margin:-1px;padding:0;overflow:hidden;clip-path:inset(50%);white-space:nowrap;border:0}
+
+.popover{position:absolute;z-index:45;min-width:200px;max-height:min(360px,60vh);overflow:auto;padding:var(--s1);border:1px solid var(--line);border-radius:var(--r-card);background:var(--surface-2);box-shadow:var(--shadow)}
+.popover button{display:flex;align-items:center;gap:var(--s2);width:100%;min-height:var(--h-control);padding:0 var(--s3);border:0;border-radius:var(--r-control);background:transparent;color:var(--text);font:inherit;font-size:14px;text-align:left;white-space:nowrap;cursor:pointer}
+.popover button:hover{background:var(--surface-hover)}
+.popover button[aria-pressed]::before{content:"";flex:none;width:14px}
+.popover button[aria-pressed="true"]::before{content:"✓"}
+
+dialog.dlg{width:min(480px,calc(100% - 2*var(--s4)));max-width:none;padding:var(--s5);border:1px solid var(--line);border-radius:var(--r-dialog);background:var(--surface);color:var(--text);box-shadow:var(--shadow)}
+dialog.dlg.isWide{width:min(640px,calc(100% - 2*var(--s4)))}
+dialog.dlg::backdrop{background:var(--scrim)}
+dialog.dlg h2{margin:0 0 var(--s4);font-size:20px;font-weight:700}
+.dlgActions{display:flex;flex-wrap:wrap;justify-content:flex-end;gap:var(--s2);margin-top:var(--s5)}
+@media(max-width:700px){dialog.dlg,dialog.dlg.isWide{width:100%;height:100%;max-height:none;border-radius:0}}
+
+.status{font-size:14px;line-height:1.45;color:var(--muted)}
+.status.isError{color:var(--danger-text)}
+
+/* Toast from toast.js: bottom centre, on phones above the tab bar, in the review overlay above its action bar. */
+.toast{position:fixed;left:50%;bottom:calc(var(--s6) + env(safe-area-inset-bottom));transform:translateX(-50%);z-index:70;display:flex;align-items:center;gap:var(--s3);max-width:calc(100vw - 2*var(--s4) - env(safe-area-inset-left) - env(safe-area-inset-right));padding:var(--s2) var(--s2) var(--s2) var(--s4);border:1px solid var(--line-strong);border-radius:var(--r-card);background:var(--surface-2);color:var(--text);box-shadow:var(--shadow);font-size:14px;line-height:1.45}
+.toast[data-tone="error"]{color:var(--danger-text)}
+@media(max-width:700px){.toast{bottom:calc(64px + var(--s3) + env(safe-area-inset-bottom))}body.reviewOpen .toast{bottom:calc(72px + var(--s3) + env(safe-area-inset-bottom))}}
+
+.emptyState{display:grid;justify-items:center;gap:var(--s2);padding:var(--s6) var(--s4);text-align:center;color:var(--muted);font-size:14px;line-height:1.45}
+.emptyState .emptyStateIcon{width:40px;height:40px;display:grid;place-items:center;border:1px solid var(--line);border-radius:50%;color:var(--text)}
+.emptyStateIcon svg{width:20px;height:20px;fill:none;stroke:currentColor;stroke-width:1.7;stroke-linecap:round;stroke-linejoin:round}
+.emptyState .btn{margin-top:var(--s2)}
+.emptyState h3{margin:0;font-size:15px;font-weight:600;color:var(--text)}
+.emptyState p{margin:0}
+
+/* Motion: pages fade in for 150 ms. */
+@keyframes cardIn{from{opacity:0}}
+/* The one reduced-motion guard for every page, the studio included. */
+@media (prefers-reduced-motion: reduce){html{scroll-behavior:auto}*,*::before,*::after{animation:none!important;transition:none!important}}
+@media(pointer:coarse){.btn,.popover button,.check,.field :is(input:not([type=file]),select,textarea){min-height:var(--h-touch)}}

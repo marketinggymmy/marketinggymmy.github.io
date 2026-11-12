@@ -1,0 +1,46 @@
+/* Hülle des Studios: Tabs über die ganze Breite, darunter Bibliotheksspalte und Hauptbereich. Nur Layout, Werte aus tokens.css; die Bühne selbst bleibt in style.css. */
+/* Die Tabs stehen in der ersten Rasterzeile, so springen sie beim Tabwechsel nicht (E5). */
+.studio{display:grid;grid-template-columns:260px minmax(0,1fr);grid-template-rows:auto minmax(0,1fr);align-content:start;column-gap:var(--s4);min-height:calc(100dvh - var(--topbar) - 2*var(--s3))}
+.studioLibrary{display:flex;flex-direction:column;gap:var(--s3);min-width:0;padding:var(--s4);border-right:1px solid var(--line);overflow:auto}
+.structureNavLabel{margin:0 var(--s3) var(--s1);font-size:12px;font-weight:600;line-height:1.5;color:var(--muted)}
+.studioMain{min-width:0}
+.studioTabs{grid-column:1/-1;display:flex;gap:var(--s1);margin-bottom:var(--s4)}
+.studioTab{min-height:var(--h-control);padding:0 var(--s3);border:0;border-bottom:2px solid transparent;background:transparent;color:var(--muted);font:inherit;font-size:14px;font-weight:600;cursor:pointer}
+.studioTab:hover{color:var(--text)}
+.studioTab.isActive{color:var(--text);border-bottom-color:var(--accent)}
+/* Hinweiszeile nach dem Export: Text plus Sprung zur Aufgabe, in der die Version liegt. */
+.exportHint{display:flex;flex-wrap:wrap;align-items:center;gap:var(--s3);margin:0 0 var(--s3)}
+/* Transkript ohne Hero: die Ablage aus dem Dialog Video hinzufügen (.addVideoDrop), mit Formatzeile. */
+.source .dropzone{margin:var(--s4)}
+.dropzone strong{max-width:100%;overflow-wrap:anywhere}
+.dropzone.disabled{pointer-events:none;opacity:.58}
+.dropzoneFormats{font-size:12px;color:var(--muted)}
+
+/* Der Untertitel-Editor braucht unter 1600 px die ganze Breite, sonst schrumpft die Bühne. Die Bibliothek wird dann eine Zeile über ihm:
+   Suche und Projekt-Chips, waagrecht scrollbar, ohne JS; Videoliste, Ordner anlegen und Hinweise ruhen bis zum nächsten Tab. */
+@media(max-width:1600px){
+  body[data-active-workspace="subtitles"] .studio{grid-template-columns:minmax(0,1fr);grid-template-rows:none}
+  body[data-active-workspace="subtitles"] .studioLibrary{flex-direction:row;align-items:center;gap:var(--s2);margin-bottom:var(--s3);padding:var(--s1) 0;border-right:0;border-bottom:1px solid var(--line);overflow:auto hidden}
+  body[data-active-workspace="subtitles"] .studioLibrary :is(.structureNavLabel,#sidebarHome,#newFolder,.history,.libraryStatus){display:none}
+  body[data-active-workspace="subtitles"] .studioLibrary :is(.libraryNavigation,.libraryFolders,#folderList,#librarySearchPanel){display:flex;flex:none;align-items:center;gap:var(--s1);margin:0;padding:0;border:0}
+  body[data-active-workspace="subtitles"] .studioLibrary :is(.sideNavButton,.folderRow){flex:none;width:auto;max-width:220px}
+  body[data-active-workspace="subtitles"] #librarySearchPanel label{margin:0;white-space:nowrap}
+  /* Die Zeile schneidet Überstand ab und der erste Knopf steht bündig links, darum liegt der Fokusring innen. */
+  body[data-active-workspace="subtitles"] .studioLibrary :focus-visible{outline-offset:-2px}
+}
+@media(max-width:1100px){
+  .studio{grid-template-columns:220px minmax(0,1fr)}
+}
+@media(max-width:700px){
+  .studio{grid-template-columns:minmax(0,1fr);grid-template-rows:none}
+  .studioLibrary{max-height:40dvh;border-right:0;border-bottom:1px solid var(--line)}
+  .studioMain{padding-bottom:calc(64px + var(--s4) + env(safe-area-inset-bottom))}
+}
+/* Tippflächen 44 px auf Touch (Spec 4.3); am Schreibtisch bleiben die kompakten Höhen, die Bühne rechnet mit ihnen. */
+@media(pointer:coarse){
+  /* Fields reach 44 px through .field in tokens.css; these compact ones keep their own size and need it here. */
+  .studioTab,.inspectorTabs button,.timelineHeading .field select,.previewToolbar :is(.btn,.field select){min-height:var(--h-touch)}
+  .folderMore{width:var(--h-touch);height:var(--h-touch);opacity:1}
+  .previewExpandButton{width:var(--h-touch);min-width:var(--h-touch);height:var(--h-touch)}
+  .phraseWordChip{min-width:var(--h-touch);min-height:var(--h-touch)}
+}

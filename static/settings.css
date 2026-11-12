@@ -1,0 +1,12 @@
+/* Einstellungen: drei Karten untereinander, kein gefüllter Button. Werte aus tokens.css. */
+.settingsPage{display:grid;gap:var(--s6);max-width:var(--page-narrow)}
+.settingsPage .card{display:grid;gap:var(--s3);justify-items:start}
+.settingsPage h2{margin:0;font-size:15px;font-weight:600}
+.settingsPage .field{width:100%;max-width:320px}
+.settingsPage .status{margin:0}
+.settingsPage .status:empty{position:absolute}
+.themeSwatches{margin:0;padding:0;border:0;min-width:0;width:100%;display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:var(--s3)}
+.themeSwatch{position:relative;height:84px;border:2px solid transparent;border-radius:var(--r-tile);display:flex;align-items:flex-end;justify-content:center;padding-bottom:var(--s2);font-size:14px;cursor:pointer;background:var(--bg-image),var(--bg);color:var(--swatch-text);text-shadow:var(--swatch-shadow)}
+.themeSwatch:has(:checked){border-color:var(--swatch-on)}
+.themeSwatch:has(:focus-visible){outline:2px solid var(--accent-text);outline-offset:2px}
+.settingsSteps{margin:0;padding-left:var(--s5);display:grid;gap:var(--s1);font-size:14px;line-height:1.45;color:var(--muted)}

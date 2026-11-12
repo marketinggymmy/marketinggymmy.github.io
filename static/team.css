@@ -1,0 +1,78 @@
+/* Layout der Mehr-Seiten (Anfragen, Team, Finanzen, Abläufe) auf Tokens; Knöpfe, Felder, Karten und Tabellen kommen aus tokens.css, die Rollenregeln aus roles.css. */
+/* Anfragen: Bausteine aus tokens.css, hier nur Layout auf Tokens. */
+.requestsPage{display:grid;gap:var(--s6);max-width:var(--page-max);min-width:0}
+.requestsPage :is(h2,p){margin:0}
+.requestsPage h2{font-size:18px;font-weight:600;color:var(--text)}
+.requestForm{display:grid;gap:var(--s3);min-width:0}
+.requestCompose>summary::-webkit-details-marker{display:none}
+.requestCompose[open]>summary{margin-bottom:var(--s3)}
+.requestCompose .requestForm h2{display:none}
+.requestForm h2{font-size:15px}
+.requestForm textarea{height:120px;resize:vertical}
+.requestFields{display:grid;grid-template-columns:repeat(auto-fit,minmax(160px,1fr));gap:var(--s3)}
+.requestList{display:grid;gap:var(--s2)}
+.requestCard{display:grid;gap:var(--s2);min-width:0}
+.requestHead{display:flex;align-items:center;gap:var(--s2);min-width:0}
+.requestHead strong{font-size:15px;font-weight:600;overflow-wrap:anywhere}
+.requestMeta{font-size:12px;font-weight:500;color:var(--muted)}
+.requestText{font-size:14px;line-height:1.45;white-space:pre-wrap;overflow-wrap:anywhere}
+.requestActions{display:flex;flex-wrap:wrap;align-items:end;gap:var(--s2)}
+.requestActions .field{flex:1 1 220px}
+/* Team: Bausteine aus tokens.css, hier nur Layout auf Tokens. */
+.teamPage{display:grid;gap:var(--s6);max-width:var(--page-max);min-width:0}
+.teamPage :is(h2,p,ol){margin:0}
+.teamPage .card{display:grid;gap:var(--s3);min-width:0}
+.teamPage>[data-team-new]{justify-self:start}
+.teamPage .card h2{font-size:15px;font-weight:600;color:var(--text)}
+.teamSteps{padding-left:var(--s5);display:grid;gap:var(--s1);font-size:14px;line-height:1.45;color:var(--muted)}
+.teamPage .table thead th{white-space:nowrap}
+.teamPage .table tbody th{font-size:14px;color:var(--text)}
+.teamActions{display:flex;flex-wrap:wrap;align-items:center;gap:var(--s2)}
+.teamPage .table .teamActions{flex-wrap:nowrap;justify-content:flex-end}
+.teamFields{display:grid;grid-template-columns:repeat(auto-fit,minmax(180px,1fr));gap:var(--s3)}
+.teamBrands{display:grid;gap:var(--s2);min-width:0;margin:0;padding:0;border:0}
+.teamBrands legend{padding:0;margin-bottom:var(--s2);font-size:12px;font-weight:500;color:var(--muted)}
+.teamBrandList{display:flex;flex-wrap:wrap;gap:var(--s3)}
+/* Am Handy wird jede Person eine Karte: Name und Rolle oben, darunter Login, Firmen mit Status, dann die Aktionen. Die Kopfzeile bleibt für Screenreader. */
+@media(max-width:700px){
+.teamPage [data-team-list],.teamPage [data-team-list] tbody{display:block}
+.teamPage [data-team-list] thead{position:absolute;width:1px;height:1px;overflow:hidden;clip-path:inset(50%);white-space:nowrap}
+.teamPage [data-team-list] tr{display:grid;grid-template-columns:minmax(0,1fr) auto;align-items:center;gap:var(--s1) var(--s3);padding:var(--s3)}
+.teamPage [data-team-list] tr+tr{border-top:1px solid var(--line)}
+.teamPage [data-team-list] td{padding:0;border:0;min-width:0;overflow-wrap:anywhere}
+.teamPage [data-team-list] td:nth-child(1){grid-area:1/1;font-weight:600}
+.teamPage [data-team-list] td:nth-child(2){grid-area:2/1/auto/-1;color:var(--muted)}
+.teamPage [data-team-list] td:nth-child(3){grid-area:1/2;color:var(--muted)}
+.teamPage [data-team-list] td:nth-child(4){grid-area:3/1}
+.teamPage [data-team-list] td:nth-child(4)::before{content:"Firmen: " / "";color:var(--muted)}
+.teamPage [data-team-list] td:nth-child(5){grid-area:3/2}
+.teamPage [data-team-list] td:nth-child(6){grid-area:4/1/auto/-1;padding-top:var(--s2)}
+.teamPage [data-team-list] .teamActions{flex-wrap:wrap;justify-content:flex-start}
+}
+/* Finanzen und Abläufe: Bausteine aus tokens.css, hier nur Layout auf Tokens. */
+.financePage,.automationsPage{display:grid;gap:var(--s6);max-width:var(--page-max);min-width:0}
+.financePage :is(h2,p),.automationsPage :is(h2,p,ul){margin:0}
+.financePage>h2,.automationsSection>h2{font-size:18px;font-weight:600;color:var(--text)}
+.financeFilters{display:flex;flex-wrap:wrap;align-items:flex-end;gap:var(--s3)}
+.financeFilters .field{flex:1 1 140px}
+.financeFilters .btn{text-decoration:none}
+.financeTotals{display:grid;grid-template-columns:repeat(auto-fit,minmax(140px,1fr));gap:var(--s4)}
+.financeTotals .card{display:grid;gap:var(--s1)}
+.financeTotals .card{align-content:start}
+.financeTotals strong{font-size:24px;font-weight:700;line-height:1.1;font-variant-numeric:tabular-nums}
+.financeTotals span{font-size:12px;font-weight:500;color:var(--muted)}
+.financePage .table :is(th,.num){white-space:nowrap}
+.financePage .table .field{min-width:120px}
+.financePage .num input{text-align:right}
+.automationsSection,.automationsForm,.automationsList{display:grid;gap:var(--s3);min-width:0}
+.automationsList{gap:var(--s2)}
+.automationsForm h2{font-size:15px;font-weight:600;color:var(--text)}
+.automationsFields{display:grid;grid-template-columns:repeat(auto-fit,minmax(180px,1fr));gap:var(--s3)}
+.automationsRow{display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:var(--s3)}
+.automationsInfo{display:grid;gap:var(--s1);min-width:0;flex:1 1 260px;overflow-wrap:anywhere}
+.automationsInfo strong{font-size:15px;font-weight:600}
+.automationsMeta,.automationsHint,.automationsLog{font-size:14px;line-height:1.45;color:var(--muted)}
+.automationsActions{display:flex;flex-wrap:wrap;align-items:center;gap:var(--s2)}
+.automationsLog{display:grid;gap:var(--s1);padding:0;list-style:none;font-variant-numeric:tabular-nums}
+/* Überfälliges und überzogene Budgets; tests/test_block_f_ui.py pinnt die Klasse. */
+.adminHot{color:var(--danger);font-weight:600}

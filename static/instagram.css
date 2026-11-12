@@ -1,0 +1,58 @@
+/* Instagram in the composer, the grid view and the setup dialog (dialog.dlg.isWide); every value from tokens.css. */
+.planningInstagram{border:1px solid var(--line);border-radius:var(--r-card);padding:var(--s3);min-width:0}
+.igBox{display:grid;gap:var(--s3);min-width:0}
+.igBox :is(h3,h4){font-size:12px;color:var(--muted);font-weight:600;margin:var(--s1) 0 var(--s4)}
+.igCheck{display:flex;align-items:center;gap:var(--s2);font-size:13px;color:var(--text)}
+.igReel{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:var(--s3);align-items:end}
+.igItems{list-style:none;display:grid;gap:var(--s2);padding:0;margin:0}
+.igItem{display:flex;align-items:center;gap:var(--s2);border:1px solid var(--line);border-radius:var(--r-control);padding:var(--s1) var(--s2);min-width:0}
+.igItemName{flex:1;min-width:0;overflow-wrap:anywhere;font-size:13px}
+.igItemKind{color:var(--muted);font-size:12px}
+.igItem .btn{padding:0 var(--s2);font-size:12px}
+.igPicker{display:grid;gap:var(--s1);max-height:240px;overflow:auto;border:1px solid var(--line);border-radius:var(--r-control);padding:var(--s2)}
+.igPicker .btn{justify-content:flex-start;padding-block:var(--s2);text-align:left;overflow-wrap:anywhere}
+.igOptionNote,.igEmpty{color:var(--muted);font-size:12px}
+.igCounters{display:flex;flex-wrap:wrap;gap:var(--s3);color:var(--muted);font-size:12px}
+.igCounters .isOver{color:var(--danger);font-weight:600}
+.igApproval{border-left:3px solid var(--warn);padding:var(--s1) var(--s2);font-size:13px;overflow-wrap:anywhere}
+.igProblems{list-style:none;display:grid;gap:var(--s1);padding:0;margin:0;font-size:13px}
+.igProblemError{color:var(--danger);overflow-wrap:anywhere}
+.igProblemHint{color:var(--muted);overflow-wrap:anywhere}
+.igState{display:flex;flex-wrap:wrap;align-items:center;gap:var(--s2);min-width:0}
+.igStateDetail{margin:0;font-size:12px;color:var(--muted);overflow-wrap:anywhere}
+/* Instagram states as chip dots: held waits, failed is an error, published glows like the stage. */
+.chip[data-ig-state="held"]{--stage-color:var(--warn)}
+.chip[data-ig-state="failed"]{--stage-color:var(--danger)}
+.chip[data-ig-state="published"]{--stage-color:var(--accent)}
+.igPermalink{color:var(--text)}
+.igError{color:var(--danger);font-size:13px;min-height:0}
+/* Grid view: planned feed posts above the account's latest posts, like the profile. */
+.igGridView{display:grid;gap:var(--s4);min-width:0}
+.igGridToolbar{display:flex;align-items:flex-end;gap:var(--s4);flex-wrap:wrap}
+.igGridStatus{color:var(--muted);font-size:13px;min-height:1em}
+.igGrid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:var(--s1);max-width:540px;width:100%}
+.igTile{position:relative;display:block;aspect-ratio:4/5;overflow:hidden;padding:0;border:0;border-radius:0;background:var(--surface);color:var(--text)}
+.igTile img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
+/* A dashed border, not an outline, so the global focus ring still shows on planned tiles. */
+.igTile.isPlanned{border:2px dashed var(--muted);cursor:grab}
+.igTileTitle,.igTileDate{position:absolute;left:0;right:0;padding:var(--s1) var(--s2);font-size:12px;background:color-mix(in srgb,var(--bg-deep) 60%,transparent);overflow-wrap:anywhere}
+/* The title stands one date line above the date: both share font size and line-height. */
+.igTileTitle{bottom:calc(1lh + 2*var(--s1))}
+.igTileDate{bottom:0;color:var(--muted)}
+.igGridNote{grid-column:1/-1}
+@media(max-width:700px){.igGridToolbar .field{width:100%}}
+/* Setup dialog on the settings page. */
+.igSetup .igSetupHeader h2{margin:0}
+.igSetupHeader{display:flex;justify-content:space-between;align-items:center;gap:var(--s3)}
+.igSetupStatus{color:var(--muted);font-size:13px;min-height:1em;overflow-wrap:anywhere}
+.igSetupSection{display:grid;gap:var(--s2);border-top:1px solid var(--line);padding-top:var(--s3);margin-top:var(--s3)}
+.igSetupSection h3{font-size:13px;color:var(--muted)}
+.igSetupText{font-size:13px;line-height:1.5;overflow-wrap:anywhere}
+.igSetupAccounts{display:grid;gap:var(--s2)}
+.igSetupAccount{display:flex;flex-wrap:wrap;align-items:center;gap:var(--s2) var(--s3)}
+.igSetupAccount strong{min-width:110px}
+.igSetupAccount .field{flex:1 1 200px}
+.igSetupHint{color:var(--muted);font-size:12px}
+.igSetupLocations{list-style:none;display:grid;gap:var(--s2);padding:0;margin:0}
+.igSetupLocation{display:flex;justify-content:space-between;align-items:center;gap:var(--s2);font-size:13px;overflow-wrap:anywhere}
+.igSetupRow{display:flex;flex-wrap:wrap;align-items:flex-end;gap:var(--s2)}

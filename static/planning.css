@@ -1,0 +1,111 @@
+/* Kalender: every value from tokens.css; buttons and fields are .btn and .field, [hidden] is enforced globally in tokens.css. */
+.planningWorkspace{min-width:0}
+.planningWorkspace textarea{resize:vertical}
+/* Head: one row with navigation, Monat | Woche, Kalender | Raster, the filters and the one filled button. */
+.planningHeading{display:flex;flex-wrap:wrap;align-items:center;gap:var(--s2) var(--s3);margin-bottom:var(--s5)}
+.planningCalendarNav{display:flex;align-items:center;gap:var(--s1);min-width:0}
+.planningCalendarNav .btn.isQuiet{width:var(--h-control);padding:0}
+.planningCalendarNav h2{margin:0 0 0 var(--s2);font-size:18px;font-weight:600}
+.planningViews,.planningModes{display:flex;gap:var(--s1)}
+:is(.planningViews,.planningModes) [aria-pressed="true"]{background:var(--surface-2);border-color:var(--line-strong)}
+.planningFilter{flex:0 1 180px}
+/* Firma and Projekt stand in the head row; on phones they fold out under „Filter“. */
+.planningFilters{display:contents}
+.planningHeading [data-planning-filters-toggle]{display:none}
+.planningHeading [data-planning-new]{margin-left:auto}
+.planningReadonly{flex-basis:100%;margin:0}
+.planningLayout{display:grid;grid-template-columns:280px minmax(0,1fr);gap:var(--s5);min-width:0}
+.planningLoadError{display:grid;gap:var(--s3);justify-items:start}
+.planningLoadError p{margin:0}
+/* Ablage: approved tasks without a date and drafts; on phones the same entries fill the sheet. */
+.planningTray{display:grid;align-content:start;gap:var(--s4);padding-right:var(--s5);border-right:1px solid var(--line);min-width:0}
+:is(.planningTray,.planningSheet) h2{margin:0;font-size:15px;font-weight:600}
+.planningTrayGroup{display:grid;gap:var(--s2);min-width:0}
+.planningTrayGroup h3{margin:0;font-size:12px;font-weight:500;color:var(--muted)}
+.planningTrayItem{display:grid;gap:var(--s2);padding:var(--s2);border:1px solid var(--line);border-radius:var(--r-control);background:var(--surface-2);min-width:0}
+.planningTrayItem[draggable="true"]{cursor:grab}
+.planningTrayItem>.btn{justify-self:start}
+/* A draft reads like a task: its card sits plain inside the entry, Termin setzen below it. */
+.planningTrayItem>.planningPost,.planningTrayItem>.planningPost:hover{padding:0;border:0;background:none}
+.planningSheet{position:fixed;inset:auto 0 calc(64px + env(safe-area-inset-bottom)) 0;z-index:31;display:grid;align-content:start;gap:var(--s4);max-height:70dvh;overflow-y:auto;overscroll-behavior:contain;padding:var(--s4);border-top:1px solid var(--line);border-radius:var(--r-dialog) var(--r-dialog) 0 0;background:var(--surface);box-shadow:var(--shadow)}
+.planningCalendar{min-width:0;border:1px solid var(--line);border-radius:var(--r-card);background:var(--surface);overflow:hidden;align-self:start}
+/* The page scrolls, the month has no inner scroll height; the seven days share the width and the box only scrolls sideways below 504 px. */
+.planningCalendarScroll{overflow-x:auto;overflow-y:auto;min-height:320px;min-width:0;overscroll-behavior:contain;scrollbar-color:var(--line-strong) var(--surface)}
+.planningGrid{display:grid;grid-template-columns:repeat(7,minmax(72px,1fr));min-width:504px;align-items:stretch}
+.planningWeekday{position:sticky;top:0;z-index:1;background:var(--surface-2);padding:var(--s2) var(--s3);color:var(--muted);font-size:12px;border-top:1px solid var(--line);border-bottom:1px solid var(--line)}
+.planningDay{min-height:125px;border-right:1px solid var(--line);border-bottom:1px solid var(--line);padding:var(--s2);min-width:0;display:flex;flex-direction:column;gap:var(--s2)}
+.planningDay:nth-of-type(7n){border-right:0}
+.planningDay.isOutside{background:var(--bg);color:var(--muted)}
+.planningDay.isToday{background:var(--surface-2)}
+.planningDayAdd{align-self:flex-start;min-width:var(--h-control);padding:0 var(--s2);font-size:12px;font-variant-numeric:tabular-nums}
+.planningDay.isOutside .planningDayAdd{color:var(--muted)}
+.planningDay.isToday .planningDayAdd{border-color:var(--accent);color:var(--accent);font-weight:600}
+/* A calendar entry is a card, not a .btn: cover, title, time, firm and the status chip. */
+.planningPost{display:flex;align-items:stretch;justify-content:flex-start;gap:var(--s2);width:100%;min-width:0;min-height:var(--h-touch);padding:var(--s2);border:1px solid var(--line-strong);border-radius:var(--r-control);background:var(--bg);color:var(--text);text-align:left;overflow:hidden;cursor:pointer}
+.planningPost:hover{background:var(--surface-hover);border-color:var(--muted)}
+.planningPostCopy{min-width:0;display:grid;gap:var(--s1);font-size:12px;color:var(--muted);line-height:1.4;overflow-wrap:anywhere}
+.planningPostCopy strong{font-size:12px;color:var(--text);font-weight:600;line-height:1.4}
+.planningPostCover{width:38px;height:55px;object-fit:cover;flex-shrink:0;border-radius:var(--r-control);background:var(--bg-deep)}
+.planningCalendar .planningPost{flex-direction:column}
+.planningCalendar .planningPostCover{width:100%;height:64px}
+.planningPostTime{font-variant-numeric:tabular-nums;white-space:nowrap}
+.planningPostState{display:flex;align-items:center;gap:var(--s1);min-width:0}
+.planningPostState svg{width:14px;height:14px}
+.planningPostReason{overflow-wrap:anywhere}
+/* Phones: one week as a list, day by day, without horizontal scrolling. */
+.planningWeekList{list-style:none;margin:0;padding:0}
+.planningListDay{display:grid;gap:var(--s2);padding:var(--s3) var(--s4);border-bottom:1px solid var(--line);min-width:0}
+.planningListDay:last-child{border-bottom:0}
+.planningListDay h3{margin:0;font-size:14px;font-weight:600;color:var(--muted);font-variant-numeric:tabular-nums}
+.planningListDay.isToday h3{color:var(--accent)}
+.planningListDay.isFree{min-height:var(--h-touch);padding-block:var(--s2);align-content:center}
+.planningWeekList .planningPost{flex-direction:row}
+.planningWeekList .planningPostCover{width:38px;height:55px}
+/* Composer: one column in the wide dialog; head and footer stay, the body scrolls. */
+dialog.planningComposer.dlg{padding:0;max-height:calc(100dvh - 2*var(--s5));overflow:hidden}
+.planningComposer form{display:flex;flex-direction:column;max-height:calc(100dvh - 2*var(--s5));min-width:0;margin:0}
+.planningComposerHeader{display:flex;flex-wrap:wrap;align-items:center;gap:var(--s3);padding:var(--s4) var(--s5);border-bottom:1px solid var(--line);flex-shrink:0}
+dialog.planningComposer h2{margin:0;flex:1;min-width:0}
+.planningComposerState{order:3;flex-basis:100%;min-width:0}
+.planningComposerState:not(:has(.igState:not([hidden]))){display:none}
+.planningComposerBody{flex:1 1 auto;display:grid;gap:var(--s5);padding:var(--s5);overflow-y:auto;overscroll-behavior:contain;min-height:0}
+.planningFields{display:grid;gap:var(--s4);min-width:0}
+.planningFieldRow{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:var(--s3);min-width:0}
+.planningSchedule{display:grid;gap:var(--s3);padding:0;margin:0;border:0;min-width:0}
+.planningSchedule legend{padding:0;margin-bottom:var(--s3);font-size:14px;font-weight:600}
+.planningSwitch{display:flex;align-items:center;gap:var(--s2);min-height:var(--h-control);font-size:14px;cursor:pointer}
+.planningSection>summary{display:flex;align-items:center;min-height:var(--h-control);font-size:14px;font-weight:600;cursor:pointer}
+.planningSection>summary[aria-disabled=true]{color:var(--text-dim);cursor:not-allowed}
+.planningSection[open]>summary{margin-bottom:var(--s3)}
+.planningSection>.status{margin-bottom:var(--s3)}
+.planningChannelRow{display:grid;gap:var(--s2);padding-bottom:var(--s2)}
+.planningChannelCheck{display:flex;align-items:center;gap:var(--s2);min-height:var(--h-control);font-size:14px}
+.planningCoverActions{display:flex;gap:var(--s2);flex-wrap:wrap;margin-bottom:var(--s2)}
+.planningCoverThumbnail{width:64px;height:86px;object-fit:cover;border-radius:var(--r-control);border:1px solid var(--line);margin-bottom:var(--s3)}
+.planningUpload{position:relative;overflow:hidden}
+.planningUpload input[type=file]{position:absolute;inset:0;opacity:0;width:100%;cursor:pointer}
+.planningPreview{display:grid;gap:var(--s3);padding-top:var(--s5);border-top:1px solid var(--line);min-width:0}
+.planningPreview h3{margin:0;font-size:15px;font-weight:600}
+.planningPreview h4{margin:0;font-size:14px;font-weight:600}
+.planningPreviewStage{position:relative;width:min(100%,240px);aspect-ratio:9/16;margin-inline:auto;background:var(--bg-deep);display:grid;place-items:center;border:1px solid var(--line);border-radius:var(--r-card);overflow:hidden}
+.planningPreviewStage :is(video,img){position:absolute;inset:0;width:100%;height:100%;object-fit:contain}
+.planningPreviewStage :is(video,#planningImage){z-index:1}
+.planningPreviewStage>span{padding:var(--s5);color:var(--muted);text-align:center;font-size:14px}
+#planningPreviewCaption{margin:0;white-space:pre-wrap;overflow-wrap:anywhere;line-height:1.45}
+.planningComposerFooter{display:grid;gap:var(--s2);padding:var(--s4) var(--s5);border-top:1px solid var(--line);flex-shrink:0}
+.planningFeedback{display:grid;gap:var(--s2);justify-items:start}
+.planningFeedback p{margin:0;overflow-wrap:anywhere}
+.planningFeedback p:empty{display:none}
+.planningFeedback:not(:has(p:not(:empty),#planningReload:not([hidden]))){display:none}
+.planningFooterActions{display:flex;align-items:center;justify-content:space-between;gap:var(--s2);flex-wrap:wrap}
+.planningFooterStart,.planningFooterEnd{display:flex;align-items:center;gap:var(--s2);flex-wrap:wrap}
+.planningFooterEnd{margin-left:auto}
+.planningWarning{color:var(--text);font-size:13px;line-height:1.6;overflow-wrap:anywhere}
+/* Below 1101 px the Ablage folds into the sheet behind „Ablage“ (spec 4.7). */
+@media(max-width:1100px){.planningLayout{grid-template-columns:minmax(0,1fr)}.planningTray{display:none}}
+@media(min-width:1101px){.planningHeading [data-planning-tray-open]{display:none}}
+@media(min-width:701px){.planningSheet{left:calc(var(--sidebar) + env(safe-area-inset-left));bottom:0}}
+/* Phones: the period on top, then Heute, the arrows and Filter, then Kalender | Raster and Ablage (spec 4.8 point 6). */
+@media(max-width:700px){.planningLayout{gap:var(--s4)}.planningViews{display:none}.planningCalendarNav{flex:1 1 100%;flex-wrap:wrap}.planningCalendarNav h2{flex-basis:100%;order:-1;margin:0}.planningHeading [data-planning-filters-toggle]{display:inline-flex;margin-left:auto}.planningFilters{display:flex;flex:1 1 100%;gap:var(--s2)}.planningHeading:not([data-filters="open"]) .planningFilters{display:none}.planningFilter{flex:1 1 0}dialog.planningComposer.dlg{max-height:none}.planningComposer form{height:100%;max-height:none}.planningComposerHeader,.planningComposerBody,.planningComposerFooter{padding-inline:var(--s4)}}
+/* Tippflächen 44 px auf Touch (Spec 4.3), nach den Grundregeln, damit sie gewinnen. */
+@media(pointer:coarse){.planningCalendarNav .btn.isQuiet{width:var(--h-touch)}.planningSection>summary,.planningChannelCheck,.planningSwitch{min-height:var(--h-touch)}}

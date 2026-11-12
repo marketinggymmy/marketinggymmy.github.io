@@ -1,0 +1,64 @@
+/* Material: nur Layout. Buttons, Felder, Chips, Karten, Dialoge und Status kommen aus tokens.css. */
+.materialWorkspace{min-width:0;display:grid;gap:var(--s4)}
+.materialWorkspace p{margin:0}
+.materialHeading{display:flex;justify-content:space-between;align-items:center;gap:var(--s3);flex-wrap:wrap}
+.materialActions,.materialSourceActions{display:flex;align-items:center;gap:var(--s2);flex-wrap:wrap}
+.materialSources summary{cursor:pointer;font-weight:600}
+.materialSources[open] summary{margin-bottom:var(--s2)}
+.materialSource{display:flex;justify-content:space-between;align-items:center;gap:var(--s3);flex-wrap:wrap;padding:var(--s2) 0}
+.materialSourceInfo{display:grid;gap:var(--s1);min-width:0}
+.materialMeta{font-size:12px;font-weight:500;color:var(--muted);overflow-wrap:anywhere}
+
+/* Suche immer sichtbar, die übrigen Filter in details.materialFilters: am Desktop offen und ohne summary, am Handy eingeklappt. */
+.materialFilterBar{display:flex;align-items:flex-start;gap:var(--s3);flex-wrap:wrap}
+.materialFilterFields{display:flex;align-items:flex-end;gap:var(--s3);flex-wrap:wrap}
+.materialFilterFields .field{flex:1 1 140px}
+.materialFilterBar .materialSearch{flex:1 1 200px}
+.materialFilters{flex:5 1 560px;min-width:0}
+.materialFilters>summary{display:none}
+.materialFilterBar .check{min-height:var(--h-control)}
+.materialTaskFilter{justify-self:start;display:inline-flex;align-items:center;min-height:var(--h-control);padding:0 var(--s3);border:1px solid var(--line);border-radius:999px;font-size:12px;overflow-wrap:anywhere}
+
+/* Klebt unter der Topbar (z-index 20) und über den Karten. */
+.materialSelection{position:sticky;top:var(--topbar);z-index:15;display:flex;align-items:flex-end;gap:var(--s2);flex-wrap:wrap;padding:var(--s3);box-shadow:var(--shadow)}
+.materialSelection strong{align-self:center;margin-right:auto}
+
+.materialGrid{display:grid;grid-template-columns:repeat(auto-fill,minmax(200px,1fr));gap:var(--s3)}
+.materialGrid .emptyState{grid-column:1/-1}
+.materialCard{position:relative;display:grid;align-content:start;min-width:0;padding:0}
+.materialCard[data-selected="true"]{border-color:var(--text);box-shadow:0 0 0 1px var(--text)}
+.materialCardBody{display:grid;min-width:0;border-radius:inherit;cursor:pointer}
+.materialFrame{position:relative;aspect-ratio:16/10;display:grid;place-items:center;overflow:hidden;border-radius:var(--r-card) var(--r-card) 0 0;background:var(--bg-deep)}
+/* Absolut im Rahmen: height:100% greift in der auto-hohen Rasterzeile nicht, Hochkant-Reels zeigten sonst nur das obere Drittel. */
+.materialThumb{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;display:block;pointer-events:none}
+.materialMissing{font-size:12px;color:var(--muted)}
+/* Feste Höhe: Name und Meta je eine Zeile, die Chipzeile ist so hoch wie ein Button. */
+.materialInfo{display:grid;gap:var(--s1);padding:var(--s3) var(--s3) 0;min-width:0}
+.materialName{display:block;font-size:15px;font-weight:600;line-height:1.45;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.materialInfo .materialMeta{line-height:1.45;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.materialChips{display:flex;align-items:center;gap:var(--s1);height:var(--h-control);margin:var(--s1) var(--s3) var(--s3);overflow:hidden}
+.materialChips .chip{flex:none}
+.materialTasks{display:flex;gap:var(--s1);min-width:0;overflow:hidden}
+.materialTasks .chip{flex:0 1 auto;min-width:0;overflow:hidden}
+.materialChips .btn{flex:none;margin-left:auto;padding:0 var(--s2)}
+/* Die Chipzeile schneidet ab und der Button ist so hoch wie sie, also liegt der Ring innen. */
+.materialChips .btn:focus-visible{outline-offset:-2px}
+/* Checkbox oben links und Ansehen unten rechts liegen über der Vorschau. */
+.materialOverlay{position:absolute;inset:0 0 auto;aspect-ratio:16/10;pointer-events:none}
+.materialSelect{position:absolute;top:var(--s2);left:var(--s2);padding:var(--s1) var(--s2);border-radius:var(--r-control);background:var(--surface-2);cursor:pointer;pointer-events:auto}
+.materialView{position:absolute;right:var(--s2);bottom:var(--s2);padding:0 var(--s2);background:var(--surface-2);pointer-events:auto}
+.materialSelect,.materialView{opacity:0;transition:opacity .15s var(--ease)}
+.materialCard:is(:hover,:focus-within,[data-selected="true"]) :is(.materialSelect,.materialView){opacity:1}
+.materialMore{justify-self:center}
+
+.materialDialogHead{display:flex;align-items:flex-start;justify-content:space-between;gap:var(--s3)}
+.materialDialogHead h2{min-width:0;overflow-wrap:anywhere}
+.materialDialogHead .btn{flex:none}
+.materialDialogFields{display:grid;gap:var(--s3)}
+.materialTaskOptions{display:grid;gap:var(--s1);max-height:min(360px,50vh);overflow:auto}
+.materialTaskOption{width:100%;flex-direction:column;align-items:flex-start;gap:0;padding:var(--s2) var(--s3);text-align:left;overflow-wrap:anywhere}
+.materialTaskOption[aria-pressed="true"]{border-color:var(--text);background:var(--surface-hover)}
+.materialViewer :is(img,video){display:block;max-width:100%;max-height:70vh;margin:0 auto}
+
+@media(pointer:coarse){.materialFilterBar .check{min-height:var(--h-touch)}.materialSources summary{display:flex;align-items:center;min-height:var(--h-touch)}.materialSelect{min-width:var(--h-touch);justify-content:center}.materialChips{height:var(--h-touch)}.materialSelect,.materialView{opacity:1}}
+@media(max-width:700px){.materialSearch>label{position:absolute;width:1px;height:1px;overflow:hidden;clip-path:inset(50%);white-space:nowrap}.materialFilterBar .materialSearch{flex:1 1 0}.materialFilters:not([open]){flex:0 0 auto}.materialSources{padding-block:0}.materialSources>summary{display:flex;align-items:center;min-height:var(--h-touch)}.materialFilters[open]{flex-basis:100%}.materialFilters>summary{display:inline-flex}.materialFilters[open]>summary{margin-bottom:var(--s3)}.materialGrid{grid-template-columns:repeat(2,minmax(0,1fr));gap:var(--s2)}.materialChips{margin-left:var(--s2);margin-right:var(--s2)}.materialChips :is(.chip,.btn){padding:0 var(--s1)}.materialChips .btn{font-size:12px}}

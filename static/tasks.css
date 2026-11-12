@@ -1,0 +1,149 @@
+/* Aufgaben: nur Anordnung. Knöpfe, Felder, Chips, Karten, Popover und Dialog kommen als Bausteine aus tokens.css, der Fokusring ist der globale. */
+/* The panel width (spec 4.6) and, from 1101 px, the room the content makes for it. */
+.tasksWorkspace{min-width:0;--tasks-panel:440px}
+.tasksWorkspace textarea{resize:vertical}
+.tasksLayout{display:grid;grid-template-columns:260px minmax(0,1fr);gap:var(--s5);min-width:0}
+@media (min-width:701px){.tasksLayout[data-tree="closed"]{grid-template-columns:minmax(0,1fr)}.tasksLayout[data-tree="closed"] .tasksTree{display:none}}
+.tasksTreeFoot{display:flex;flex-wrap:wrap;gap:var(--s1)}
+.tasksTreeHead{display:flex;justify-content:flex-end;margin-bottom:var(--s3)}
+[data-tasks-tree-toggle]{width:var(--h-control);padding:0}
+.tasksTree{border-right:1px solid var(--line);padding-right:var(--s4);min-width:0}
+.tasksScopeSelect,.tasksToolbar [data-tasks-filters-toggle]{display:none}
+.tasksTree .tasksGroup{display:grid;gap:var(--s1);margin-bottom:var(--s3)}
+.tasksScope{justify-content:space-between;width:100%;text-align:left}
+.tasksProject{padding-left:var(--s6);color:var(--muted)}
+.tasksScope[aria-current=true]{background:var(--surface-2);border-color:var(--line-strong)}
+.tasksCount{color:var(--muted);font-size:12px}
+.tasksMain{min-width:0}
+.tasksBrief{margin-bottom:var(--s4)}
+.tasksBrief summary{cursor:pointer;color:var(--muted);font-size:12px;font-weight:500}
+.tasksBrief p{white-space:pre-wrap;margin:var(--s2) 0 0;line-height:1.45}
+/* Two fixed rows: title and actions, then search, filters and the view. */
+.tasksHead{display:flex;flex-wrap:wrap;align-items:center;gap:var(--s2);margin-bottom:var(--s3)}
+.tasksScopeHead{display:flex;align-items:center;gap:var(--s2);flex:1;min-width:0;min-height:var(--h-control)}
+.tasksScopeTitle{margin:0;font-size:18px;font-weight:600;line-height:1.3;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.tasksScopeHead .tasksCardMeta{flex:none}
+.tasksToolbar{display:flex;flex-wrap:wrap;align-items:center;gap:var(--s2);margin-bottom:var(--s4)}
+/* Grows to 240 px; on a narrow desktop it gives way first, so row 2 stays one line. */
+.tasksSearch{flex:1 1 120px;max-width:240px}
+/* 8 px sides: Firma to Frist, the search and Board | Liste still make one line at 1024 px. */
+.tasksFilter,.tasksViews .btn{padding:0 var(--s2)}
+.tasksFilterWrap{position:relative}
+.tasksPopover,.tasksMenu{top:calc(100% + var(--s1))}
+.tasksPopover{left:0}
+/* Set by tasks.js when the popover would reach past the screen edge. */
+.tasksPopover[data-end]{left:auto;right:0}
+.tasksMenu{right:0}
+.tasksFilterCount{display:inline-grid;place-items:center;min-width:20px;height:20px;padding:0 var(--s1);border-radius:999px;background:var(--surface-2);color:var(--accent);font-size:12px;font-weight:600}
+.tasksStatus{min-height:1em}
+.tasksList{display:grid;gap:var(--s6)}
+.tasksList .tasksGroup{display:grid;gap:var(--s1);min-width:0}
+.tasksGroupHead,.tasksColumnHead{display:flex;align-items:center;gap:var(--s2);margin:0;font-size:12px;font-weight:500}
+.tasksGroupHead{margin-bottom:var(--s1)}
+.tasksRow{display:grid;grid-template-columns:var(--s7) minmax(0,1fr) auto auto;align-items:center;gap:var(--s3);height:56px;padding:0 var(--s4);cursor:pointer}
+.tasksRow:hover,.tasksCard:hover{border-color:var(--line-strong)}
+.tasksRowNumber{color:var(--muted);font-size:12px;font-weight:500}
+.tasksRowMain{display:grid;gap:var(--s1);min-width:0}
+.tasksRowTitle{font-size:15px;font-weight:600;line-height:1.2;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.tasksRow .tasksCardMeta,.tasksCard .tasksCardMeta{white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.tasksEmpty{color:var(--muted);padding:var(--s5) 0;font-size:14px}
+/* Title and Schließen-X on one line, like the head of Video hinzufügen (addvideo.css). */
+.tasksDialogHead{display:flex;align-items:center;justify-content:space-between;gap:var(--s3);margin-bottom:var(--s4)}
+.tasksDialog .tasksDialogHead h2{margin:0}
+.tasksDialogHead .btn{flex:none;margin-right:calc(-1 * var(--s2))}
+.tasksDialogFields{display:grid;gap:var(--s3)}
+.tasksDialog .status{margin:var(--s3) 0 0}
+.tasksDialogText{margin:0;line-height:1.45}
+.tasksCheck{display:flex;gap:var(--s2);align-items:center;font-size:14px;color:var(--text)}
+.tasksCheck input{width:auto;min-height:auto}
+.tasksViews{display:flex;gap:var(--s1);margin-left:auto}
+.tasksViews [aria-pressed="true"]{background:var(--surface-2);border-color:var(--line-strong)}
+.tasksBoard{position:relative;display:grid;grid-auto-flow:column;grid-auto-columns:minmax(240px,1fr);gap:var(--s3);overflow-x:auto;padding-bottom:var(--s3);scroll-padding-inline:var(--s2)}
+.tasksColumn{display:flex;flex-direction:column;gap:var(--s2);min-width:0;padding:var(--s2);border:1px solid var(--line);border-radius:var(--r-card)}
+.tasksColumn[data-drop-target="true"]{border-color:var(--accent)}
+.tasksColumnHead{justify-content:space-between;padding:var(--s1)}
+.tasksCard{display:grid;gap:var(--s2);cursor:grab}
+.tasksCard:active{cursor:grabbing}
+.tasksCard[draggable="false"]{cursor:pointer}
+.tasksCardTitle{font-size:15px;font-weight:600;line-height:1.35;overflow-wrap:anywhere;display:-webkit-box;-webkit-box-orient:vertical;-webkit-line-clamp:2;overflow:hidden}
+.tasksCardMeta{color:var(--muted);font-size:12px;font-weight:500}
+.tasksCardFoot{display:flex;align-items:center;gap:var(--s2)}
+.tasksCardFoot .initial{margin-left:auto}
+.tasksPanel{position:fixed;top:var(--topbar);right:0;bottom:0;width:min(var(--tasks-panel),100vw);overflow-y:auto;background:var(--surface);border-left:1px solid var(--line-strong);padding:var(--s4) max(var(--s5),env(safe-area-inset-right)) var(--s6) var(--s5);z-index:40;display:flex;flex-direction:column;gap:var(--s3);box-shadow:var(--shadow)}
+@keyframes tasksPanelIn{from{transform:translateX(100%)}}
+.tasksPanel{animation:tasksPanelIn .2s var(--ease)}
+/* No page fade (cardIn, shell.css) while the panel is open: it would lift the topbar and the tab bar above the phone panel. Duration, not animation:none, so closing does not restart the fade. */
+.tasksWorkspace.hasPanel{animation-duration:0s}
+@media (min-width:1101px){.tasksWorkspace.hasPanel .tasksMain{margin-right:var(--tasks-panel)}}
+/* Up to 1599 px the tree steps aside while the panel is open, else the board keeps less than two columns. */
+@media (min-width:1101px) and (max-width:1599px){.tasksWorkspace.hasPanel .tasksLayout{grid-template-columns:minmax(0,1fr)}.tasksWorkspace.hasPanel .tasksTree{display:none}}
+.tasksPanelHeader{display:grid;gap:var(--s3)}
+.tasksPanelHeader [data-task-panel-close]{justify-self:start}
+.tasksPanelTitle{display:flex;align-items:center;gap:var(--s1);min-width:0}
+.tasksPanelNumber{flex:none;color:var(--muted);font-size:20px;font-weight:700}
+.tasksPanel .tasksTitleInput{flex:1;min-width:0;min-height:var(--h-control);padding:0 var(--s2);border:1px solid transparent;border-radius:var(--r-control);background:transparent;color:inherit;font-size:20px;font-weight:700;line-height:1.2}
+.tasksPanel .tasksTitleInput:focus{border-color:var(--line)}
+.tasksPanel .tasksTitleInput:disabled{opacity:1;cursor:default}
+.tasksPanelStage{display:grid;gap:var(--s2)}
+.stageLadder{display:flex;margin:0;padding:0;list-style:none}
+.stageLadder li{flex:1;min-width:0}
+.stageLadder button{display:grid;place-items:center;width:100%;min-height:var(--h-control);padding:0;border:0;border-radius:var(--r-control);background:transparent;cursor:pointer}
+.stageLadder button:hover:not(:disabled){background:var(--surface-hover)}
+.stageLadder button:disabled{opacity:1;cursor:default}
+.stageLadder button::before{content:"";width:12px;height:12px;border:1px solid var(--muted);border-radius:999px}
+.stageLadder button.isDone::before{border-color:var(--muted);background:var(--muted)}
+/* The current step: its stage colour from tokens.css and a ring in the text colour, so it never looks like a done step. */
+.stageLadder [aria-current="step"]::before{border-color:transparent;background:var(--stage-color,var(--muted));box-shadow:0 0 0 2px var(--surface),0 0 0 4px var(--text)}
+@media (pointer:coarse){.stageLadder button{min-height:var(--h-touch)}}
+.tasksPanelStageName{margin:0}
+.tasksPanelMeta{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:var(--s3)}
+.tasksDueHead{display:flex;align-items:center;gap:var(--s2)}
+.tasksSaveStatus{margin:0;color:var(--muted);font-size:12px}
+/* Der Datei-Input bleibt das global versteckte 1 px Feld; mit 100 % würde er absolut positioniert das Panel verbreitern. */
+.tasksPanel :is(input:not([type="file"]),select,textarea){width:100%}
+.tasksFieldRow{display:grid;grid-template-columns:1fr 1fr;gap:var(--s3)}
+.tasksPanelSection{margin-top:var(--s3);display:grid;gap:var(--s2)}
+.tasksPanelSection h3{margin:0;font-size:15px;font-weight:600}
+details.tasksPanelSection{display:block}
+.tasksPanelSection summary{min-height:var(--h-control);line-height:var(--h-control);font-size:15px;font-weight:600;cursor:pointer}
+@media (pointer:coarse){.tasksFilter{min-width:var(--h-touch)}.tasksPanelSection summary{min-height:var(--h-touch);line-height:var(--h-touch)}[data-tasks-tree-toggle]{width:var(--h-touch)}.tasksPanel .tasksTitleInput{min-height:var(--h-touch)}}
+.tasksSectionCount{color:var(--muted)}
+.tasksSectionBody{display:grid;gap:var(--s2);padding-top:var(--s2)}
+.tasksLinked{display:grid;gap:var(--s2);border:1px solid var(--line);border-radius:var(--r-control);padding:var(--s3)}
+.tasksLinkedInfo{display:grid;gap:var(--s1);overflow-wrap:anywhere}
+.tasksLinkedActions{display:flex;gap:var(--s2);flex-wrap:wrap}
+.tasksMaterial{grid-template-columns:auto minmax(0,1fr) auto;align-items:center}
+.tasksMaterialThumb{width:64px;height:var(--h-control);object-fit:cover;border-radius:var(--r-control);background:var(--bg-deep);display:block}
+.tasksMaterial>.tasksLinkedInfo:nth-child(1){grid-column:1/3}
+.tasksMaterial>[data-version-from-material]{grid-column:1/-1;justify-self:start}
+.tasksMaterial .tasksLinkedInfo{grid-template-columns:minmax(0,1fr)}
+.tasksMaterial .tasksLinkedInfo strong{overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.tasksLinkedPost{display:grid;justify-items:start;gap:var(--s1);width:100%;padding:var(--s2) var(--s4);text-align:left}
+.tasksPostRow{display:grid;gap:var(--s1);justify-items:start}
+.tasksPicker{display:grid;gap:var(--s2);max-height:280px;overflow-y:auto}
+.tasksOption{width:100%;justify-content:flex-start;text-align:left;overflow-wrap:anywhere}
+.tasksProgress{width:100%;height:8px;accent-color:var(--text)}
+@media (min-width:701px){.tasksMenu [data-menu-add-video]{display:none}}
+@media (max-width:700px){
+  .tasksLayout{grid-template-columns:1fr;gap:var(--s3)}
+  /* The Bereich select stands in for the tree, the title and the Firma and Projekt filters; the create buttons move into Mehr. */
+  .tasksTree,.tasksWorkspace [data-tasks-tree-toggle],.tasksHead [data-task-add-video],
+  .tasksFilterWrap:has(>:is([data-tasks-filter="brand"],[data-tasks-filter="project"])){display:none}
+  .tasksHead .tasksScopeSelect{display:grid;flex:1 1 0}
+  /* The title stays as the h2 under the topbar h1 for screen readers, like .srOnly in tokens.css. */
+  .tasksScopeHead{position:absolute;width:1px;height:1px;min-height:0;overflow:hidden;clip-path:inset(50%);white-space:nowrap}
+  .tasksSearch{flex:1 1 0;max-width:none}
+  /* Search, Filter and Board | Liste on one line at 375 px; Stufe, Art, Verantwortlich and Frist fold out on the next. */
+  .tasksToolbar{column-gap:var(--s1)}
+  .tasksToolbar [data-tasks-filters-toggle]{display:inline-flex}
+  .tasksToolbar .tasksFilterWrap{order:2}
+  .tasksToolbar:not([data-filters="open"]) .tasksFilterWrap{display:none}
+  .tasksToolbar[data-filters="open"]::after{content:"";order:1;flex-basis:100%}
+  /* Popovers open under the whole row at full width, so none reaches past the screen edge. */
+  .tasksHead,.tasksToolbar{position:relative}
+  .tasksFilterWrap{position:static}
+  .tasksPopover,.tasksMenu{left:0;right:0}
+  .tasksRow{grid-template-columns:auto minmax(0,1fr) auto auto;padding:0 var(--s3)}
+  .tasksPanel{inset:0;width:auto;border-left:0;box-shadow:none}
+  .tasksFieldRow{grid-template-columns:1fr}
+}

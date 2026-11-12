@@ -1,0 +1,28 @@
+/* A transient video-only view; caption coordinates remain relative to the same stage. */
+body[data-video-expanded="true"]{overflow:hidden}
+body[data-video-expanded="true"] :is(.sidebar,.topbar,.editorHeader,.editorRail,.styleInspector,.editorTimeline){display:none}
+body[data-video-expanded="true"] .previewPanel{
+  position:fixed;inset:0;z-index:1000;width:100vw;height:100dvh;min-height:0;
+  margin:0;padding:0;border:0;border-radius:0;overflow:hidden;
+  background:#050506;box-shadow:none;backdrop-filter:none
+}
+body[data-video-expanded="true"] .previewCanvasArea{width:100%;height:100%;min-height:0;flex:1}
+body[data-video-expanded="true"] .previewCanvasWrap{width:100%;height:100%;min-height:0}
+body[data-video-expanded="true"] .previewCanvasWrap .videoStage{
+  width:min(100cqw,calc(100cqh * var(--stage-ratio)));height:auto;margin:0;box-shadow:none
+}
+body[data-video-expanded="true"] .previewPanel :is(.transport,.editorToolDock,.editorToolPanel,.safeArea,.captionGuide,.captionResizeHandle){display:none}
+body[data-video-expanded="true"] .previewToolbar{display:contents}
+body[data-video-expanded="true"] .previewToolbar>:not(#expandVideo){display:none}
+body[data-video-expanded="true"] .captionSelection{pointer-events:none;cursor:default;box-shadow:none}
+body[data-video-expanded="true"] .captionWord{pointer-events:none;cursor:default}
+body[data-video-expanded="true"] #expandVideo,
+body[data-video-expanded="true"] #closeExpandedVideo{
+  position:absolute;top:max(14px,env(safe-area-inset-top));z-index:5;
+  display:grid;place-items:center;width:44px;height:44px;padding:0;
+  border:1px solid #ffffff38;border-radius:8px;background:#161719e6;color:#edf7ff;
+  box-shadow:0 2px 12px #0006
+}
+body[data-video-expanded="true"] #expandVideo{right:max(68px,calc(env(safe-area-inset-right) + 68px))}
+body[data-video-expanded="true"] #closeExpandedVideo{right:max(14px,env(safe-area-inset-right))}
+body[data-video-expanded="true"] :is(#expandVideo,#closeExpandedVideo):hover{background:#303237;border-color:#ffffff70}

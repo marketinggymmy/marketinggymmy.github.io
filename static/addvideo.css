@@ -1,0 +1,22 @@
+/* Dialog Video hinzufügen: nur Layout, alle Werte aus tokens.css. */
+.addVideoDialog{overflow:auto}
+.addVideoForm{display:grid;gap:var(--s4)}
+.addVideoForm p{margin:0}
+.addVideoForm .status.isError:empty{display:none}
+.addVideoHead{display:flex;align-items:center;justify-content:space-between;gap:var(--s3)}
+.addVideoHead h2{margin:0}
+.addVideoHead .btn{flex:none;margin-right:calc(-1 * var(--s2))}
+/* Switch and its sentence belong together: 6 px like label and field. */
+.addVideoTask{display:grid;gap:6px}
+.addVideoDrop{display:grid;justify-items:center;gap:var(--s2);padding:var(--s5) var(--s4);border:1px dashed var(--line);border-radius:var(--r-card);text-align:center;cursor:pointer}
+.addVideoDrop:hover,.addVideoDrop.isDragging{border-color:var(--line-strong);background:var(--surface-2)}
+.addVideoDrop strong{font-size:15px;font-weight:600}
+.addVideoDrop:has(.addVideoFile:focus-visible){outline:2px solid var(--accent-text);outline-offset:2px}
+.addVideoFile{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);opacity:0}
+.addVideoColumns{display:grid;grid-template-columns:1fr 1fr;gap:var(--s3)}
+.addVideoSpeaker summary{cursor:pointer;font-size:12px;font-weight:500;color:var(--muted)}
+.addVideoSpeaker .field{margin-top:var(--s2)}
+.addVideoCheck{display:flex;align-items:center;gap:var(--s2);font-size:14px;cursor:pointer}
+.addVideoProgress{width:100%;height:var(--s1);accent-color:var(--accent)}
+@media(max-width:700px){.addVideoColumns{grid-template-columns:1fr}}
+@media(pointer:coarse){.addVideoSpeaker summary{display:flex;align-items:center;min-height:var(--h-touch)}}

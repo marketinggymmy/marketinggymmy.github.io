@@ -1,0 +1,22 @@
+/* Rollen blenden Navigation aus und müssen jede Anzeige-Regel schlagen. */
+body:not([data-role="owner"]) :is([data-workspace="team"],[data-workspace="finance"],[data-workspace="automations"]){display:none!important}
+body:not([data-role="owner"]) [data-tab-sheet] :is([data-shell-route="team"],[data-shell-route="finance"],[data-shell-route="automations"]){display:none!important}
+/* Einstellungen sieht jede Rolle, aber nur die Karte Darstellung; die übrigen Karten liest der Server nur für Dominik. */
+body:not([data-role="owner"]) [data-settings-owner]{display:none!important}
+body:is([data-role="kunde"],[data-role="gast"]) [data-workspace]:not([data-workspace="review"],[data-workspace="requests"],[data-workspace="settings"]),body:is([data-role="kunde"],[data-role="gast"]) .libraryNavigation,body:is([data-role="kunde"],[data-role="gast"]) .brand,body:is([data-role="kunde"],[data-role="gast"]) .navMore summary{display:none!important}
+body:is([data-role="kunde"],[data-role="gast"]) .tabBar [data-shell-route]:not([data-shell-route="review"]),body:is([data-role="kunde"],[data-role="gast"]) [data-tab-sheet] [data-shell-route]:not([data-shell-route="requests"],[data-shell-route="settings"]){display:none!important}
+/* „Prüfer bearbeiten“ auf der Seite Freigaben bekommt nur Dominik. */
+body:is([data-role="team"],[data-role="pruefer"],[data-role="kunde"],[data-role="gast"]) .reviewReviewers{display:none}
+/* Prüfer dürfen keine Videos anlegen (POST /api/videos antwortet 403): kein Einstieg in den Dialog. */
+body[data-role="pruefer"] :is([data-today-add-video],[data-topbar-add-video],[data-task-add-video],[data-source="[data-task-add-video]"],[data-task-panel-add-video]){display:none!important}
+/* Aufgaben: Prüfer lesen nur, Team plant keine Beiträge (der Server antwortet sonst 403). Das Etikett des Datei-Uploads geht mit. */
+body[data-role="pruefer"] :is([data-task-new],[data-source="[data-task-new]"],[data-tasks-more],[data-task-batch],[data-project-new],[data-project-edit],[data-brand-new],[data-task-delete],[data-version-upload],.tasksUpload,[data-task-link-video],[data-task-plan-post],[data-version-submit],[data-version-delete],[data-version-from-export],[data-version-from-material],[data-unlink-video],[data-unlink-material]){display:none}
+body[data-role="team"] [data-task-plan-post]{display:none}
+/* Material: Prüfer lesen nur (Auswahl sperrt material.js), Quellen unter /api/material/sources verwaltet nur Dominik. Neu einlesen (/api/material/scan) darf das Team. */
+body[data-role="pruefer"] :is(.materialSelect,[data-material-scan-all],[data-source="[data-material-scan-all]"],[data-material-ack],[data-material-forget]){display:none}
+body[data-role="pruefer"] .materialCardBody{cursor:default}
+body:is([data-role="team"],[data-role="pruefer"]) :is([data-material-connect],[data-source="[data-material-connect]"],[data-material-connect-hint],.materialSourceActions){display:none}
+.roleNote{font-size:12px;color:var(--warn);background:none;border:1px solid var(--warn);border-radius:999px;padding:var(--s1) var(--s3);white-space:nowrap;text-align:start}
+/* Am Handy kürzt die Notiz auf 40 % der Breite (block statt flex, damit die Auslassungspunkte greifen) und wird 44 px hoch;
+   den vollen Text setzt shell.js als title und zeigt ihn beim Tippen als Toast. Den dunklen Grund auf dem Lichteinfall gibt shell.css. */
+@media(max-width:700px){.roleNote{display:inline-block;max-width:40vw;min-height:var(--h-touch);padding-block:0;line-height:calc(var(--h-touch) - 2px);overflow:hidden;text-overflow:ellipsis}}

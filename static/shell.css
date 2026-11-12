@@ -1,0 +1,65 @@
+/* Gerüst: Seitenleiste, Topbar, Tab-Leiste und die Sichtbarkeit der Bereiche. Werte aus tokens.css. */
+body.sidebarCollapsed{--sidebar:var(--sidebar-collapsed)}
+
+.sidebar{position:fixed;inset:0 auto 0 0;z-index:30;isolation:isolate;display:flex;flex-direction:column;gap:var(--s4);width:calc(var(--sidebar) + env(safe-area-inset-left));padding:var(--s3) var(--s3) var(--s3) calc(var(--s3) + env(safe-area-inset-left));background:var(--bg);border-right:1px solid var(--line);overflow:hidden auto}
+.sidebarHead{display:flex;align-items:center;justify-content:space-between;gap:var(--s2);min-height:var(--h-control)}
+.brand{display:flex;align-items:center;gap:var(--s2);min-width:0;padding:0 var(--s2);color:var(--text);text-decoration:none;font-size:20px;font-weight:800;letter-spacing:-.02em}
+.brand svg{width:24px;height:24px;stroke-width:2.2}
+/* A seam in the page colour fills the gap between control and ring, so the ring borders dark ground over the light spots too (3:1). */
+.topbarActions .btn:focus-visible,body.sidebarCollapsed #toggleSidebar:focus-visible{box-shadow:0 0 0 2px var(--bg)}
+.sidebarIconButton{flex:none;width:var(--h-control);height:var(--h-control);padding:0;display:grid;place-items:center;border:0;border-radius:var(--r-control);background:transparent;color:var(--muted);cursor:pointer}
+.sidebarIconButton:hover{background:var(--surface-2);color:var(--text)}
+.workspaceNav,.navMore{display:grid;gap:var(--s1)}
+.navItem{position:relative;display:flex;align-items:center;gap:var(--s3);width:100%;min-height:var(--h-touch);padding:0 var(--s3);border:0;border-radius:999px;background:transparent;color:var(--muted);font:inherit;font-size:14px;font-weight:500;text-align:left;cursor:pointer;list-style:none;transition:background-color .15s var(--ease)}
+.navItem::-webkit-details-marker{display:none}
+.navItem svg{width:20px;height:20px;flex:none}
+.navItem span{min-width:0;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.navItem:hover{background:var(--surface-2);color:var(--text)}
+.navMore[open]>summary{color:var(--text)}
+.navItem.isActive{background:linear-gradient(90deg,var(--accent-soft),var(--accent));color:var(--bg);border-radius:999px}
+body.sidebarCollapsed .sidebarHead{flex-direction:column}
+body.sidebarCollapsed :is(.brandLabel,.navItem span){display:none}
+body.sidebarCollapsed .brand{padding:0}
+body.sidebarCollapsed .navItem{justify-content:center;padding:0;width:var(--h-control);min-height:var(--h-control)}
+
+/* The focus scroll keeps the focused control clear of the sticky topbar and, on phones, of the fixed tab bar (WCAG 2.4.11). */
+html{scroll-padding-top:calc(var(--topbar) + var(--s2));scroll-padding-bottom:var(--s2)}
+.appShell{margin-left:calc(var(--sidebar) + env(safe-area-inset-left));min-width:0;min-height:100dvh;display:flex;flex-direction:column}
+.topbar{position:sticky;top:0;z-index:20;isolation:isolate;display:flex;align-items:center;justify-content:space-between;gap:var(--s4);height:var(--topbar);padding:0 max(var(--s5),env(safe-area-inset-right)) 0 var(--s5);border-bottom:1px solid var(--line);background:var(--bg)}
+.topbarTitle{margin:0;min-width:0;font-family:var(--font);font-size:24px;font-weight:700;line-height:1.2;letter-spacing:-.01em;color:var(--text);overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.topbarActions{display:flex;align-items:center;gap:var(--s2);min-width:0}
+.topbarActions .btn{flex:none;white-space:nowrap}
+/* A page button with a copy in the topbar (shell.js setActions): from 701 px only the copy shows, on phones the button stays on the page. */
+@media(min-width:701px){#structureWorkspace .topbarSource{display:none}}
+
+#structureWorkspace{width:100%;min-width:0;padding:var(--s5) max(var(--s5),env(safe-area-inset-right)) var(--s5) var(--s5);font-size:14px;line-height:1.45}
+[data-structure-view]:not([hidden]){animation:cardIn .15s var(--ease)}
+body:not([data-active-workspace="transcribe"]):not([data-active-workspace="subtitles"]):not([data-active-workspace="social"]) #studio{display:none}
+body:not([data-active-workspace="transcribe"]):not([data-active-workspace="subtitles"]):not([data-active-workspace="social"]) main{padding:0}
+body:is([data-active-workspace="transcribe"],[data-active-workspace="subtitles"],[data-active-workspace="social"]) #structureWorkspace{display:none}
+/* Same value as style.css while no safe area is set, so the studio geometry stays. */
+body:is([data-active-workspace="transcribe"],[data-active-workspace="subtitles"],[data-active-workspace="social"]) main{padding-right:max(var(--workspace-gutter),env(safe-area-inset-right))}
+
+.tabBar{display:none;position:fixed;inset:auto 0 0 0;z-index:30;height:calc(64px + env(safe-area-inset-bottom));padding:0 max(var(--s1),env(safe-area-inset-right)) env(safe-area-inset-bottom) max(var(--s1),env(safe-area-inset-left));border-top:1px solid var(--line);background:var(--bg)}
+.tabBarButton{flex:1;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:2px;min-width:var(--h-touch);min-height:var(--h-touch);padding:0;border:0;background:transparent;color:var(--muted);font:inherit;font-size:12px;font-weight:500;cursor:pointer}
+.tabBarButton svg{width:22px;height:22px}
+.tabBarButton.isActive{color:var(--accent)}
+.tabBarButton[aria-expanded="true"]{color:var(--text)}
+.tabBar:has([data-tab-more][aria-expanded="true"])::before{content:"";position:fixed;inset:0 0 calc(64px + env(safe-area-inset-bottom));background:var(--scrim)}
+.tabSheet{position:fixed;inset:auto 0 calc(64px + env(safe-area-inset-bottom)) 0;z-index:31;display:grid;gap:var(--s1);padding:var(--s2);border-top:1px solid var(--line);border-radius:var(--r-dialog) var(--r-dialog) 0 0;background:var(--surface);box-shadow:var(--shadow)}
+.tabSheet button{display:flex;align-items:center;gap:var(--s3);min-height:var(--h-touch);padding:0 var(--s3);border:0;border-radius:var(--r-control);background:transparent;color:var(--text);font:inherit;font-size:14px;text-align:left;cursor:pointer}
+.tabSheet button:hover{background:var(--surface-2)}
+
+@media(max-width:700px){
+  .sidebar{display:none}
+  .appShell{margin-left:0}
+  .topbar{padding:0 max(var(--s4),env(safe-area-inset-right)) 0 max(var(--s4),env(safe-area-inset-left))}
+  /* Two actions (Video hinzufügen, Zur Aufgabe #n) stay whole; the title gives way and ends in an ellipsis. */
+  .topbarActions{flex-shrink:0}
+  .topbarActions .btn{background:var(--bg)}
+  .topbarActions .btn:not(.roleNote){border-color:var(--line-strong)}
+  .tabBar{display:flex}
+  html{scroll-padding-bottom:calc(64px + env(safe-area-inset-bottom) + var(--s2))}
+  .topbarActions [data-source]{display:none}
+  #structureWorkspace{padding:var(--s4) max(var(--s4),env(safe-area-inset-right)) calc(64px + var(--s4) + env(safe-area-inset-bottom)) max(var(--s4),env(safe-area-inset-left))}
+}
