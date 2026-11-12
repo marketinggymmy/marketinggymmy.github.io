@@ -23,7 +23,7 @@
 /* Instagram states as chip dots: held waits, failed is an error, published glows like the stage. */
 .chip[data-ig-state="held"]{--stage-color:var(--warn)}
 .chip[data-ig-state="failed"]{--stage-color:var(--danger)}
-.chip[data-ig-state="published"]{--stage-color:var(--accent)}
+.chip[data-ig-state="published"]{--stage-color:var(--ok)}
 .igPermalink{color:var(--text)}
 .igError{color:var(--danger);font-size:13px;min-height:0}
 /* Grid view: planned feed posts above the account's latest posts, like the profile. */

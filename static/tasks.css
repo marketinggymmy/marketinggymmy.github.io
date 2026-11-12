@@ -56,8 +56,7 @@
 .tasksDialogText{margin:0;line-height:1.45}
 .tasksCheck{display:flex;gap:var(--s2);align-items:center;font-size:14px;color:var(--text)}
 .tasksCheck input{width:auto;min-height:auto}
-.tasksViews{display:flex;gap:var(--s1);margin-left:auto}
-.tasksViews [aria-pressed="true"]{background:var(--surface-2);border-color:var(--line-strong)}
+.tasksViews{margin-left:auto}
 .tasksBoard{position:relative;display:grid;grid-auto-flow:column;grid-auto-columns:minmax(240px,1fr);gap:var(--s3);overflow-x:auto;padding-bottom:var(--s3);scroll-padding-inline:var(--s2)}
 .tasksColumn{display:flex;flex-direction:column;gap:var(--s2);min-width:0;padding:var(--s2);border:1px solid var(--line);border-radius:var(--r-card)}
 .tasksColumn[data-drop-target="true"]{border-color:var(--accent)}

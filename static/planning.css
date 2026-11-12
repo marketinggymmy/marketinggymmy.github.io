@@ -6,8 +6,6 @@
 .planningCalendarNav{display:flex;align-items:center;gap:var(--s1);min-width:0}
 .planningCalendarNav .btn.isQuiet{width:var(--h-control);padding:0}
 .planningCalendarNav h2{margin:0 0 0 var(--s2);font-size:18px;font-weight:600}
-.planningViews,.planningModes{display:flex;gap:var(--s1)}
-:is(.planningViews,.planningModes) [aria-pressed="true"]{background:var(--surface-2);border-color:var(--line-strong)}
 .planningFilter{flex:0 1 180px}
 /* Firma and Projekt stand in the head row; on phones they fold out under „Filter“. */
 .planningFilters{display:contents}
@@ -106,6 +104,6 @@ dialog.planningComposer h2{margin:0;flex:1;min-width:0}
 @media(min-width:1101px){.planningHeading [data-planning-tray-open]{display:none}}
 @media(min-width:701px){.planningSheet{left:calc(var(--sidebar) + env(safe-area-inset-left));bottom:0}}
 /* Phones: the period on top, then Heute, the arrows and Filter, then Kalender | Raster and Ablage (spec 4.8 point 6). */
-@media(max-width:700px){.planningLayout{gap:var(--s4)}.planningViews{display:none}.planningCalendarNav{flex:1 1 100%;flex-wrap:wrap}.planningCalendarNav h2{flex-basis:100%;order:-1;margin:0}.planningHeading [data-planning-filters-toggle]{display:inline-flex;margin-left:auto}.planningFilters{display:flex;flex:1 1 100%;gap:var(--s2)}.planningHeading:not([data-filters="open"]) .planningFilters{display:none}.planningFilter{flex:1 1 0}dialog.planningComposer.dlg{max-height:none}.planningComposer form{height:100%;max-height:none}.planningComposerHeader,.planningComposerBody,.planningComposerFooter{padding-inline:var(--s4)}}
+@media(max-width:700px){.planningLayout{gap:var(--s4)}.planningViews{display:none}.planningCalendarNav{flex:1 1 100%;flex-wrap:wrap}.planningCalendarNav h2{flex-basis:100%;order:-1;margin:0}.planningHeading [data-planning-filters-toggle]{display:inline-flex;margin-left:auto}.planningFilters{display:flex;flex:1 1 100%;gap:var(--s2)}.planningHeading:not([data-filters="open"]) .planningFilters{display:none}.planningFilter{flex:1 1 0}dialog.planningComposer.dlg{height:calc(100% - env(safe-area-inset-top) - 12px)}.planningComposer form{height:100%;max-height:none}.planningComposerHeader,.planningComposerBody,.planningComposerFooter{padding-inline:var(--s4)}}
 /* Tippflächen 44 px auf Touch (Spec 4.3), nach den Grundregeln, damit sie gewinnen. */
 @media(pointer:coarse){.planningCalendarNav .btn.isQuiet{width:var(--h-touch)}.planningSection>summary,.planningChannelCheck,.planningSwitch{min-height:var(--h-touch)}}

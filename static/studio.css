@@ -4,10 +4,8 @@
 .studioLibrary{display:flex;flex-direction:column;gap:var(--s3);min-width:0;padding:var(--s4);border-right:1px solid var(--line);overflow:auto}
 .structureNavLabel{margin:0 var(--s3) var(--s1);font-size:12px;font-weight:600;line-height:1.5;color:var(--muted)}
 .studioMain{min-width:0}
-.studioTabs{grid-column:1/-1;display:flex;gap:var(--s1);margin-bottom:var(--s4)}
-.studioTab{min-height:var(--h-control);padding:0 var(--s3);border:0;border-bottom:2px solid transparent;background:transparent;color:var(--muted);font:inherit;font-size:14px;font-weight:600;cursor:pointer}
-.studioTab:hover{color:var(--text)}
-.studioTab.isActive{color:var(--text);border-bottom-color:var(--accent)}
+/* Die Tabs sind ein Umschalter .seg aus tokens.css. */
+.studioTabs{grid-column:1/-1;justify-self:start;margin-bottom:var(--s4)}
 /* Hinweiszeile nach dem Export: Text plus Sprung zur Aufgabe, in der die Version liegt. */
 .exportHint{display:flex;flex-wrap:wrap;align-items:center;gap:var(--s3);margin:0 0 var(--s3)}
 /* Transkript ohne Hero: die Ablage aus dem Dialog Video hinzufügen (.addVideoDrop), mit Formatzeile. */
