@@ -97,7 +97,7 @@ main{width:100%;min-width:0;margin:0;padding:var(--s3) var(--workspace-gutter);f
 .statusDot{width:9px;height:9px;border:2px solid var(--deep);border-radius:50%;background:var(--success)}
 #percent{margin-left:auto;font-size:12px;font-variant-numeric:tabular-nums;color:var(--cyan)}
 #status p{margin:10px 0 0}
-#status.error,#status.error p{color:var(--danger)}
+#status.error,#status.error p{color:var(--danger-text)}
 #status.error .statusDot{background:var(--danger);box-shadow:none}
 progress{width:100%;height:6px;margin-top:15px;border:0;border-radius:99px;overflow:hidden;background:var(--surface-hover);accent-color:var(--muted)}
 progress::-webkit-progress-bar{background:var(--surface-hover)}
@@ -307,7 +307,7 @@ body[data-active-workspace="subtitles"] .subtitleWorkspace{width:100%;padding:0}
 .inspectorSection .field .phraseWordInput{width:160px;margin:0;padding:6px 9px;font-size:16px}
 .selectedWordOptions{margin-top:16px;padding-top:14px;border-top:1px solid var(--editor-line)}
 .selectedWordOptions>strong{display:block;overflow-wrap:anywhere;font-size:15px}
-.wordSuggestions{display:grid;gap:7px;margin-top:12px}.wordSuggestions p{font-size:12px;color:var(--danger);line-height:1.5;margin:0}
+.wordSuggestions{display:grid;gap:7px;margin-top:12px}.wordSuggestions p{font-size:12px;color:var(--danger-text);line-height:1.5;margin:0}
 .proofreadingTools{display:grid;gap:8px;margin-top:16px}
 /* Untertitel-Inhalt */
 .captionOverlay .isKeyword{color:var(--keyword-color,#ffd166)}

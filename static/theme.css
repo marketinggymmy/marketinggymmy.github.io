@@ -55,7 +55,7 @@
 .folderMenu{position:fixed;z-index:100;width:240px;padding:7px;background:var(--glass-bar);border:1px solid var(--line-strong);border-radius:var(--r-tile);box-shadow:var(--shadow)}
 .folderMenu button{display:block;width:100%;min-height:44px;padding:10px 12px;text-align:left;border:0;border-radius:var(--r-field);background:transparent;color:var(--text);font-size:13px;cursor:pointer}
 .folderMenu button:hover{background:var(--veil)}
-.folderMenu .folderDelete{color:var(--danger)}
+.folderMenu .folderDelete{color:var(--danger-text)}
 .folderDialog{position:fixed;inset:0;z-index:120;display:grid;place-items:center;padding:20px;background:var(--scrim)}
 .folderDialogContent{width:min(400px,100%);padding:24px;background:var(--glass-bar);border:1px solid var(--line);border-radius:var(--r-dialog);box-shadow:var(--shadow-bar)}
 .folderDialogContent h2{font-size:20px;margin:0 0 22px}

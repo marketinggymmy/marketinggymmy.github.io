@@ -75,4 +75,4 @@
 .automationsActions{display:flex;flex-wrap:wrap;align-items:center;gap:var(--s2)}
 .automationsLog{display:grid;gap:var(--s1);padding:0;list-style:none;font-variant-numeric:tabular-nums}
 /* Überfälliges und überzogene Budgets; tests/test_block_f_ui.py pinnt die Klasse. */
-.adminHot{color:var(--danger);font-weight:600}
+.adminHot{color:var(--danger-text);font-weight:600}

@@ -34,7 +34,7 @@
 /* Set by tasks.js when the popover would reach past the screen edge. */
 .tasksPopover[data-end]{left:auto;right:0}
 .tasksMenu{right:0}
-.tasksFilterCount{display:inline-grid;place-items:center;min-width:20px;height:20px;padding:0 var(--s1);border-radius:var(--r-pill);background:var(--surface-2);color:var(--accent);font-size:12px;font-weight:600}
+.tasksFilterCount{display:inline-grid;place-items:center;min-width:20px;height:20px;padding:0 var(--s1);border-radius:var(--r-pill);background:var(--surface-2);color:var(--accent-text);font-size:12px;font-weight:600}
 .tasksStatus{min-height:1em}
 .tasksList{display:grid;gap:var(--s6)}
 .tasksList .tasksGroup{display:grid;gap:var(--s1);min-width:0}

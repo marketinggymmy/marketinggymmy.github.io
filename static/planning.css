@@ -24,7 +24,7 @@
 .planningTrayItem[draggable="true"]{cursor:grab}
 .planningTrayItem>.btn{justify-self:start}
 /* A draft reads like a task: its card sits plain inside the entry, Termin setzen below it. */
-.planningTrayItem>.planningPost,.planningTrayItem>.planningPost:hover{padding:0;border:0;background:none}
+.planningTrayItem>.planningPost,.planningTrayItem>.planningPost:hover{padding:0;border:0;border-radius:0;background:none}
 .planningSheet{position:fixed;inset:auto 0 var(--tabbar-space) 0;z-index:31;display:grid;align-content:start;gap:var(--s4);max-height:70dvh;overflow-y:auto;overscroll-behavior:contain;padding:var(--s4);border-top:1px solid var(--line);border-radius:var(--r-dialog) var(--r-dialog) 0 0;background:var(--glass-bar);box-shadow:var(--shadow-bar)}
 .planningCalendar{min-width:0;border:1px solid var(--line);border-radius:var(--r-card);background:var(--glass);box-shadow:var(--shadow-card);overflow:hidden;align-self:start}
 /* The page scrolls, the month has no inner scroll height; the seven days share the width and the box only scrolls sideways below 504 px. */
@@ -37,7 +37,7 @@
 .planningDay.isToday{background:var(--seg-on)}
 .planningDayAdd{align-self:flex-start;min-width:var(--h-control);padding:0 var(--s2);font-size:12px;font-variant-numeric:tabular-nums}
 .planningDay.isOutside .planningDayAdd{color:var(--muted)}
-.planningDay.isToday .planningDayAdd{border-color:var(--accent);color:var(--accent);font-weight:600}
+.planningDay.isToday .planningDayAdd{border-color:var(--accent);color:var(--accent-text);font-weight:600}
 /* A calendar entry is a card, not a .btn: cover, title, time, firm and the status chip. */
 .planningPost{display:flex;align-items:stretch;justify-content:flex-start;gap:var(--s2);width:100%;min-width:0;min-height:var(--h-touch);padding:var(--s2);border:1px solid var(--line-strong);border-radius:var(--r-tile);background:var(--glass-pill);color:var(--text);text-align:left;overflow:hidden;cursor:pointer}
 .planningPost:hover{background:var(--surface-hover);border-color:var(--muted)}
@@ -55,7 +55,7 @@
 .planningListDay{display:grid;gap:var(--s2);padding:var(--s3) var(--s4);border-bottom:1px solid var(--line);min-width:0}
 .planningListDay:last-child{border-bottom:0}
 .planningListDay h3{margin:0;font-size:14px;font-weight:600;color:var(--muted);font-variant-numeric:tabular-nums}
-.planningListDay.isToday h3{color:var(--accent)}
+.planningListDay.isToday h3{color:var(--accent-text)}
 .planningListDay.isFree{min-height:var(--h-touch);padding-block:var(--s2);align-content:center}
 .planningWeekList .planningPost{flex-direction:row}
 .planningWeekList .planningPostCover{width:38px;height:55px}

@@ -6,8 +6,8 @@
 .todayTile:hover{border-color:var(--line-strong)}
 .todayTileLabel{font-size:12px;font-weight:500;color:var(--muted)}
 .todayTileValue{font-size:48px;font-weight:700;line-height:1.1;font-variant-numeric:tabular-nums}
-.todayTile[data-today-tile="review"].hasOpen .todayTileValue{color:var(--accent)}
-.todayTile.isOverdue .todayTileValue{color:var(--danger)}
+.todayTile[data-today-tile="review"].hasOpen .todayTileValue{color:var(--accent-text)}
+.todayTile.isOverdue .todayTileValue{color:var(--danger-text)}
 .todayTile[data-today-unavailable] .todayTileValue{font-size:14px;font-weight:500;color:var(--muted)}
 .todayPosts{display:grid;gap:var(--s1);margin:0;padding:0;list-style:none;font-size:14px;line-height:1.45}
 .todayPosts li{min-width:0;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
