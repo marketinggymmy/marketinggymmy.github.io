@@ -123,6 +123,8 @@ function syncPlayback() {
   drawWaveform();
 }
 let waveformColors=null;
+// A new Darstellung brings new token colours: read them again and redraw.
+window.addEventListener('klartext:theme-changed',()=>{waveformColors=null;drawWaveform();});
 function drawWaveform() {
   if(!waveformPeaks||!media)return;
   // Played part in the accent, the rest in --text-dim; read once from tokens.css.

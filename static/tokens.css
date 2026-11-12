@@ -6,6 +6,8 @@
   --text-dim:#7d746d;
   --line:rgba(255,255,255,.08);
   --line-strong:rgba(255,255,255,.14);
+  /* Gezeichnete Raster (Kalender, Instagram-Raster): 1,5:1 gegen ihren Grund, damit sie auch in Light sichtbar bleiben. */
+  --line-grid:rgba(255,255,255,.14);
   /* Feldrahmen 3:1 gegen die Glas-Karte über dem hellsten Lichtfleck (WCAG 1.4.11). */
   --line-field:rgba(255,255,255,.44);
   --accent:#3b8dff;
@@ -36,6 +38,8 @@
   --primary-fill:linear-gradient(180deg,var(--accent),var(--accent-deep) 30%);
   --primary-hover:linear-gradient(180deg,var(--accent-soft),var(--accent-deep) 30%);
   --bg-deep:rgba(0,0,0,.45);
+  /* Bühne der Studio-Vorschau: der Grund hinter dem Video ist Inhalt und bleibt in jedem Modus dunkel. */
+  --stage-ground:#050506;--shadow-stage:0 8px 24px rgba(0,0,0,.4);--shadow-handle:0 1px 5px rgba(0,0,0,1);--shadow-playhead:0 0 5px rgba(0,0,0,.6);
   --font:-apple-system,BlinkMacSystemFont,"SF Pro Text","Segoe UI",Roboto,sans-serif;
   --s1:4px;--s2:8px;--s3:12px;--s4:16px;--s5:24px;--s6:32px;--s7:48px;
   --r-control:8px;--r-field:12px;--r-tile:16px;--r-card:22px;--r-dialog:28px;--r-pill:999px;
@@ -70,7 +74,7 @@ html[data-bg="schwarz"],.themeSwatch[data-swatch="schwarz"]{--bg:#000000;--bg-im
 html[data-bg="dunkel"],.themeSwatch[data-swatch="dunkel"]{--bg:#1c1c1e;--bg-image:radial-gradient(90% 45% at 65% 5%,#2c2c30 0,rgba(44,44,48,0) 70%);--surface:#272729;--surface-2:#303032;--surface-hover:#3a3a3b}
 html[data-bg="hell"],.themeSwatch[data-swatch="hell"]{--bg:#f2f2f7;--bg-image:radial-gradient(90% 45% at 65% 5%,#ffffff 0,rgba(255,255,255,0) 70%),radial-gradient(80% 45% at 5% 70%,#e6e9f2 0,rgba(230,233,242,0) 70%)}
 /* Heller Modus (Light), Werte aus html.light der Stempeluhr; Text-Tokens dunkler, bis AA auf der Karte über dem dunkelsten Fleck steht. */
-html.light{color-scheme:light;--text:#1c1c1e;--muted:rgba(28,28,30,.66);--placeholder:rgba(28,28,30,.66);--text-dim:#8e8e93;--line:rgba(0,0,0,.08);--line-strong:rgba(0,0,0,.14);--line-field:rgba(0,0,0,.46);--accent-text:#175cc4;--deep:#cfe0ff;--ok-text:#356b0a;--warn-text:#9a5200;--danger-text:#b3263f;--glass:linear-gradient(180deg,rgba(255,255,255,.85),rgba(255,255,255,.65));--glass-edge:linear-gradient(160deg,rgba(255,255,255,1),rgba(0,0,0,.06) 40%,rgba(0,0,0,.04) 60%,rgba(0,0,0,.1));--glass-bar:linear-gradient(180deg,rgba(250,250,252,.92),rgba(242,242,247,.96));--bg-deep:rgba(0,0,0,.06);--surface:#ffffff;--surface-2:#ebebf0;--surface-hover:#e2e2e8;--shadow:0 24px 80px rgba(0,0,0,.18);--scrim:rgba(0,0,0,.25);--swatch-on:var(--accent-text);--glass-pill:linear-gradient(180deg,rgba(255,255,255,.9),rgba(255,255,255,.7));--shadow-card:0 1px 2px rgba(0,0,0,.04),0 8px 24px rgba(0,0,0,.06);--shadow-pill:0 1px 2px rgba(0,0,0,.06),0 4px 14px rgba(0,0,0,.06);--shadow-bar:inset 0 1px 0 rgba(255,255,255,.9),0 -10px 40px rgba(0,0,0,.12);--field:rgba(0,0,0,.06);--field-hover:rgba(0,0,0,.09);--veil:rgba(0,0,0,.04);--seg-on:rgba(0,0,0,.07);--seg-on-shadow:none;--grip:rgba(0,0,0,.2)}
+html.light{color-scheme:light;--text:#1c1c1e;--muted:rgba(28,28,30,.66);--placeholder:rgba(28,28,30,.66);--text-dim:#8e8e93;--line:rgba(0,0,0,.08);--line-strong:rgba(0,0,0,.14);--line-grid:rgba(0,0,0,.22);--line-field:rgba(0,0,0,.46);--accent-text:#175cc4;--deep:#cfe0ff;--ok-text:#356b0a;--warn-text:#9a5200;--danger-text:#b3263f;--glass:linear-gradient(180deg,rgba(255,255,255,.85),rgba(255,255,255,.65));--glass-edge:linear-gradient(160deg,rgba(255,255,255,1),rgba(0,0,0,.06) 40%,rgba(0,0,0,.04) 60%,rgba(0,0,0,.1));--glass-bar:linear-gradient(180deg,rgba(250,250,252,.92),rgba(242,242,247,.96));--bg-deep:rgba(0,0,0,.06);--surface:#ffffff;--surface-2:#ebebf0;--surface-hover:#e2e2e8;--shadow:0 24px 80px rgba(0,0,0,.18);--scrim:rgba(0,0,0,.25);--swatch-on:var(--accent-text);--glass-pill:linear-gradient(180deg,rgba(255,255,255,.9),rgba(255,255,255,.7));--shadow-card:0 1px 2px rgba(0,0,0,.04),0 8px 24px rgba(0,0,0,.06);--shadow-pill:0 1px 2px rgba(0,0,0,.06),0 4px 14px rgba(0,0,0,.06);--shadow-bar:inset 0 1px 0 rgba(255,255,255,.9),0 -10px 40px rgba(0,0,0,.12);--field:rgba(0,0,0,.06);--field-hover:rgba(0,0,0,.09);--veil:rgba(0,0,0,.04);--seg-on:rgba(0,0,0,.07);--seg-on-shadow:none;--grip:rgba(0,0,0,.2)}
 /* Das Light-Farbfeld trägt dunkle Schrift wie .swatch.lightsw der Stempeluhr. */
 .themeSwatch[data-swatch="hell"]{--swatch-text:#1c1c1e;--swatch-shadow:none}
 /* Der Grund liegt fest unter dem Scrollen; html und body malen sonst nichts, damit der Verlauf die ganze Fläche füllt. */
