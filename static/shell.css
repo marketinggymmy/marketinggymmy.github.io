@@ -44,9 +44,9 @@ body:is([data-active-workspace="transcribe"],[data-active-workspace="subtitles"]
 /* Schwebende Glas-Leiste wie .tabs der Stempeluhr. Die Glasfläche liegt auf ::after: backdrop-filter auf der Leiste selbst
    machte sie zum Bezugsrahmen des fixierten Schleiers (::before), der dann nur noch die Leiste abdunkeln würde. */
 .tabBar{display:none;position:fixed;inset:auto max(var(--s3),calc(50% - 240px)) calc(var(--s3) + env(safe-area-inset-bottom));z-index:30;height:64px;padding:var(--s1);border-radius:var(--r-pill)}
-.tabBar::after{content:"";position:absolute;inset:0;z-index:-1;border-radius:inherit;background:var(--glass-bar);-webkit-backdrop-filter:blur(14px) saturate(1.8);backdrop-filter:blur(14px) saturate(1.8);box-shadow:var(--shadow-bar)}
+.tabBar::after{content:"";position:absolute;inset:0;z-index:-1;border-radius:inherit;background:var(--glass-tabbar);-webkit-backdrop-filter:blur(14px) saturate(1.8);backdrop-filter:blur(14px) saturate(1.8);box-shadow:var(--shadow-bar)}
 /* Der Indikator gleitet wie .tab-ind der Stempeluhr; shell.js setzt Lage und Breite, bei neuer Breite springt er (isJumping). */
-.tabBarIndicator{position:absolute;top:var(--s1);bottom:var(--s1);left:0;width:0;border-radius:var(--r-pill);background:var(--seg-on);box-shadow:var(--seg-on-shadow);opacity:0;pointer-events:none;transition:transform .5s cubic-bezier(.3,1.35,.5,1),width .5s cubic-bezier(.3,1.35,.5,1),opacity .2s}
+.tabBarIndicator{position:absolute;top:var(--s1);bottom:var(--s1);left:0;width:0;border-radius:var(--r-pill);background:var(--tab-on);box-shadow:var(--seg-on-shadow);opacity:0;pointer-events:none;transition:transform .5s cubic-bezier(.3,1.35,.5,1),width .5s cubic-bezier(.3,1.35,.5,1),opacity .2s}
 .tabBarIndicator.isShown{opacity:1}
 .tabBarIndicator.isJumping{transition:none}
 .tabBarButton{position:relative;z-index:1;flex:1;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:2px;min-width:var(--h-touch);min-height:var(--h-touch);padding:0;border:0;border-radius:var(--r-pill);background:transparent;color:var(--muted);font:inherit;font-size:12px;font-weight:500;cursor:pointer}
@@ -54,7 +54,7 @@ body:is([data-active-workspace="transcribe"],[data-active-workspace="subtitles"]
 .tabBarButton.isActive{color:var(--accent-text)}
 .tabBarButton[aria-expanded="true"]{color:var(--text)}
 .tabBar:has([data-tab-more][aria-expanded="true"])::before{content:"";position:fixed;inset:0;z-index:-2;background:var(--scrim)}
-.tabSheet{position:fixed;inset:auto max(var(--s3),calc(50% - 240px)) calc(var(--tabbar-space) + var(--s2));z-index:31;display:grid;gap:var(--s1);padding:var(--s2);border-radius:var(--r-dialog);background:var(--glass-bar);-webkit-backdrop-filter:blur(24px) saturate(1.5);backdrop-filter:blur(24px) saturate(1.5);box-shadow:var(--shadow-bar)}
+.tabSheet{position:fixed;inset:auto max(var(--s3),calc(50% - 240px)) calc(var(--tabbar-space) + var(--s2));z-index:31;display:grid;gap:var(--s1);padding:var(--s2);border-radius:var(--r-dialog);background:var(--glass-bar);-webkit-backdrop-filter:blur(24px) saturate(1.5);backdrop-filter:blur(24px) saturate(1.5);box-shadow:var(--shadow-bar);animation:sheetUp .25s ease-out}
 .tabSheet button{display:flex;align-items:center;gap:var(--s3);min-height:var(--h-touch);padding:0 var(--s3);border:0;border-radius:var(--r-field);background:transparent;color:var(--text);font:inherit;font-size:14px;text-align:left;cursor:pointer}
 .tabSheet button:hover{background:var(--veil)}
 /* Ohne backdrop-filter wären die Leisten über bewegtem Inhalt zu durchsichtig zum Lesen; dann sind sie deckend (Review-Fokus 3). */

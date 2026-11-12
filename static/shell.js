@@ -89,6 +89,8 @@
   fetch('/api/me',{headers:{Accept:'application/json'}}).then(response=>response.ok?response.json():null).then(me=>{
     if(!me)return;
     window.KlartextMe=Object.freeze(me);document.body.dataset.role=me.role;
+    // Settings opened before the role came in load their owner values now.
+    if(document.body.dataset.activeWorkspace==='settings')window.dispatchEvent(new CustomEvent('klartext:workspace-change',{detail:{name:'settings'}}));
     const note=document.querySelector('[data-role-note]');
     if(note){note.textContent=note.title=roleNotes[me.role]||'';note.hidden=!roleNotes[me.role];note.addEventListener('click',()=>window.KlartextToast?.show(note.textContent));}
     if(start(me)==='review'){

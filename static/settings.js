@@ -43,6 +43,8 @@
     const zone = root.querySelector('#settingsTimezone'), fold = root.querySelector('#settingsFold'), calendarStatus = root.querySelector('[data-settings-calendar-status]');
     const report = (text, error = false, target = status) => { target.textContent = text; target.classList.toggle('isError', error); };
     async function load() {
+      // Before /api/me answers nothing is ready; shell.js asks again once the role is there.
+      if (!document.body.dataset.role) return;
       // Only Dominik reads the server settings; every other role sees just Darstellung.
       if (document.body.dataset.role !== 'owner') { root.dataset.settingsReady = 'true'; return; }
       try {
