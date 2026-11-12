@@ -17,7 +17,7 @@
 .materialFilters{flex:5 1 560px;min-width:0}
 .materialFilters>summary{display:none}
 .materialFilterBar .check{min-height:var(--h-control)}
-.materialTaskFilter{justify-self:start;display:inline-flex;align-items:center;min-height:var(--h-control);padding:0 var(--s3);border:1px solid var(--line);border-radius:999px;font-size:12px;overflow-wrap:anywhere}
+.materialTaskFilter{justify-self:start;display:inline-flex;align-items:center;min-height:var(--h-control);padding:0 var(--s3);border:1px solid var(--line);border-radius:var(--r-pill);font-size:12px;overflow-wrap:anywhere}
 
 /* Klebt unter der Topbar (z-index 20) und über den Karten. */
 .materialSelection{position:sticky;top:var(--topbar);z-index:15;display:flex;align-items:flex-end;gap:var(--s2);flex-wrap:wrap;padding:var(--s3);box-shadow:var(--shadow)}

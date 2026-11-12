@@ -1,16 +1,16 @@
 /* Studio-Bibliothek, Upload-Hinweis, Exportmenü, Vorschauleiste, Ordnermenü und Ordner-Dialog: was nicht in tokens.css aufgeht. Werte aus tokens.css. */
 .sideNavButton svg,.folderSelect svg,.folderMore svg,.previewExpandButton svg,.expandedClose svg{width:20px;height:20px;fill:none;stroke:currentColor;stroke-width:1.6;stroke-linecap:round;stroke-linejoin:round;flex-shrink:0}
 .libraryNavigation{display:grid;gap:4px}
-.sideNavButton{display:flex;align-items:center;gap:12px;min-height:44px;width:100%;padding:10px 12px;border:0;border-radius:var(--r-control);background:transparent;color:var(--text);text-align:left;cursor:pointer;font-weight:550}
-.sideNavButton:hover,.sideNavButton[aria-pressed="true"]{background:var(--surface-2)}
+.sideNavButton{display:flex;align-items:center;gap:12px;min-height:44px;width:100%;padding:10px 12px;border:0;border-radius:var(--r-pill);background:transparent;color:var(--text);text-align:left;cursor:pointer;font-weight:550}
+.sideNavButton:hover,.sideNavButton[aria-pressed="true"]{background:var(--seg-on)}
 .libraryFolders{border-top:1px solid var(--line);padding-top:12px}
 #folderList{display:grid;gap:4px;margin-top:8px}
-.folderRow{display:flex;align-items:center;gap:2px;min-height:44px;border:1px solid transparent;border-radius:var(--r-control);position:relative}
-.folderRow:hover,.folderRow.isSelected{background:var(--surface-2);border-color:var(--line)}
+.folderRow{display:flex;align-items:center;gap:2px;min-height:44px;border:1px solid transparent;border-radius:var(--r-pill);position:relative}
+.folderRow:hover,.folderRow.isSelected{background:var(--seg-on);border-color:var(--line)}
 .folderRow.isDragOver{background:var(--surface-hover);border-color:var(--text)}
 .folderSelect{display:flex;align-items:center;gap:12px;min-height:44px;flex:1;min-width:0;text-align:left;padding:8px 10px;border:0;background:transparent;color:var(--text);cursor:pointer;font-weight:550}
 .folderSelect span{overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
-.folderMore{border:0;background:transparent;color:var(--muted);cursor:pointer;width:32px;height:32px;border-radius:var(--r-control);flex-shrink:0;margin-right:6px;opacity:0}
+.folderMore{border:0;background:transparent;color:var(--muted);cursor:pointer;width:32px;height:32px;border-radius:var(--r-pill);flex-shrink:0;margin-right:6px;opacity:0}
 .folderRow:hover .folderMore,.folderRow:focus-within .folderMore,.folderRow.isSelected .folderMore{opacity:1}
 .folderMore:hover{background:var(--surface-hover);color:var(--text)}
 .folderCount{margin-left:auto;color:var(--muted);font-size:12px;font-weight:400;font-variant-numeric:tabular-nums}
@@ -28,7 +28,7 @@
 .librarySelectionStatus:empty{display:none}
 #librarySearchPanel label{margin:var(--s2) 2px 0}
 .subtitleUploadFeedback:has(#subtitleUploadStatus:empty){display:none}
-.subtitleUploadFeedback{padding:12px 16px;border:1px solid var(--line);border-radius:var(--r-card);background:var(--surface)}
+.subtitleUploadFeedback{padding:12px 16px;border:1px solid var(--line);border-radius:var(--r-card);background:var(--glass)}
 .subtitleUploadFeedback p{margin:0;color:var(--text);font-size:13px;line-height:1.5}
 .subtitleUploadFeedback progress{display:block;width:100%;margin:10px 0 0}
 .glowControls .btn{width:100%;margin-bottom:16px}
@@ -40,7 +40,7 @@
 .exportFpsChoices legend{padding:4px 0 0;color:var(--muted);font-size:12px}
 .exportFpsChoices label{position:relative;display:grid;min-width:0;cursor:pointer}
 .exportFpsChoices input{position:absolute;inset:0;margin:0;width:100%;height:100%;opacity:0;cursor:pointer}
-.exportFpsChoices span{display:grid;place-items:center;min-height:44px;border:1px solid var(--line-strong);border-radius:var(--r-control);color:var(--text);font-size:13px;pointer-events:none}
+.exportFpsChoices span{display:grid;place-items:center;min-height:44px;border:1px solid var(--line-strong);border-radius:var(--r-pill);color:var(--text);font-size:13px;pointer-events:none}
 .exportFpsChoices label:hover span{background:var(--surface-hover)}
 .exportFpsChoices input:checked+span{background:var(--surface-hover);border-color:var(--accent);font-weight:600}
 /* The radio itself is invisible, so its label draws the focus ring from tokens.css. */
@@ -52,11 +52,11 @@
 .previewToolbar #editorSaveStatus{font-size:12px}
 /* Phones: status joins the first row so the toolbar stays at two rows and the stage keeps its height. */
 @media(max-width:700px){.previewToolbar #toggleSafeArea{order:1}}
-.folderMenu{position:fixed;z-index:100;width:240px;padding:7px;background:var(--bg);border:1px solid var(--line-strong);border-radius:var(--r-card);box-shadow:var(--shadow)}
-.folderMenu button{display:block;width:100%;min-height:44px;padding:10px 12px;text-align:left;border:0;border-radius:var(--r-control);background:transparent;color:var(--text);font-size:13px;cursor:pointer}
-.folderMenu button:hover{background:var(--surface-2)}
+.folderMenu{position:fixed;z-index:100;width:240px;padding:7px;background:var(--glass-bar);border:1px solid var(--line-strong);border-radius:var(--r-tile);box-shadow:var(--shadow)}
+.folderMenu button{display:block;width:100%;min-height:44px;padding:10px 12px;text-align:left;border:0;border-radius:var(--r-field);background:transparent;color:var(--text);font-size:13px;cursor:pointer}
+.folderMenu button:hover{background:var(--veil)}
 .folderMenu .folderDelete{color:var(--danger)}
 .folderDialog{position:fixed;inset:0;z-index:120;display:grid;place-items:center;padding:20px;background:var(--scrim)}
-.folderDialogContent{width:min(400px,100%);padding:24px;background:var(--surface);border:1px solid var(--line);border-radius:var(--r-dialog);box-shadow:var(--shadow)}
+.folderDialogContent{width:min(400px,100%);padding:24px;background:var(--glass-bar);border:1px solid var(--line);border-radius:var(--r-dialog);box-shadow:var(--shadow-bar)}
 .folderDialogContent h2{font-size:20px;margin:0 0 22px}
 .folderDialogActions{display:flex;justify-content:flex-end;gap:10px;margin-top:22px}

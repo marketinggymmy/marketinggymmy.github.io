@@ -12,7 +12,7 @@
 .tasksTree .tasksGroup{display:grid;gap:var(--s1);margin-bottom:var(--s3)}
 .tasksScope{justify-content:space-between;width:100%;text-align:left}
 .tasksProject{padding-left:var(--s6);color:var(--muted)}
-.tasksScope[aria-current=true]{background:var(--surface-2);border-color:var(--line-strong)}
+.tasksScope[aria-current=true]{background:var(--seg-on);border-color:var(--line-strong)}
 .tasksCount{color:var(--muted);font-size:12px}
 .tasksMain{min-width:0}
 .tasksBrief{margin-bottom:var(--s4)}
@@ -34,7 +34,7 @@
 /* Set by tasks.js when the popover would reach past the screen edge. */
 .tasksPopover[data-end]{left:auto;right:0}
 .tasksMenu{right:0}
-.tasksFilterCount{display:inline-grid;place-items:center;min-width:20px;height:20px;padding:0 var(--s1);border-radius:999px;background:var(--surface-2);color:var(--accent);font-size:12px;font-weight:600}
+.tasksFilterCount{display:inline-grid;place-items:center;min-width:20px;height:20px;padding:0 var(--s1);border-radius:var(--r-pill);background:var(--surface-2);color:var(--accent);font-size:12px;font-weight:600}
 .tasksStatus{min-height:1em}
 .tasksList{display:grid;gap:var(--s6)}
 .tasksList .tasksGroup{display:grid;gap:var(--s1);min-width:0}
@@ -68,7 +68,7 @@
 .tasksCardMeta{color:var(--muted);font-size:12px;font-weight:500}
 .tasksCardFoot{display:flex;align-items:center;gap:var(--s2)}
 .tasksCardFoot .initial{margin-left:auto}
-.tasksPanel{position:fixed;top:var(--topbar);right:0;bottom:0;width:min(var(--tasks-panel),100vw);overflow-y:auto;background:var(--surface);border-left:1px solid var(--line-strong);padding:var(--s4) max(var(--s5),env(safe-area-inset-right)) var(--s6) var(--s5);z-index:40;display:flex;flex-direction:column;gap:var(--s3);box-shadow:var(--shadow)}
+.tasksPanel{position:fixed;top:var(--topbar);right:0;bottom:0;width:min(var(--tasks-panel),100vw);overflow-y:auto;background:var(--glass-bar);border-left:1px solid var(--line-strong);padding:var(--s4) max(var(--s5),env(safe-area-inset-right)) var(--s6) var(--s5);z-index:40;display:flex;flex-direction:column;gap:var(--s3);box-shadow:var(--shadow)}
 @keyframes tasksPanelIn{from{transform:translateX(100%)}}
 .tasksPanel{animation:tasksPanelIn .2s var(--ease)}
 /* No page fade (cardIn, shell.css) while the panel is open: it would lift the topbar and the tab bar above the phone panel. Duration, not animation:none, so closing does not restart the fade. */
@@ -89,7 +89,7 @@
 .stageLadder button{display:grid;place-items:center;width:100%;min-height:var(--h-control);padding:0;border:0;border-radius:var(--r-control);background:transparent;cursor:pointer}
 .stageLadder button:hover:not(:disabled){background:var(--surface-hover)}
 .stageLadder button:disabled{opacity:1;cursor:default}
-.stageLadder button::before{content:"";width:12px;height:12px;border:1px solid var(--muted);border-radius:999px}
+.stageLadder button::before{content:"";width:12px;height:12px;border:1px solid var(--muted);border-radius:var(--r-pill)}
 .stageLadder button.isDone::before{border-color:var(--muted);background:var(--muted)}
 /* The current step: its stage colour from tokens.css and a ring in the text colour, so it never looks like a done step. */
 .stageLadder [aria-current="step"]::before{border-color:transparent;background:var(--stage-color,var(--muted));box-shadow:0 0 0 2px var(--surface),0 0 0 4px var(--text)}
@@ -108,7 +108,7 @@ details.tasksPanelSection{display:block}
 @media (pointer:coarse){.tasksFilter{min-width:var(--h-touch)}.tasksPanelSection summary{min-height:var(--h-touch);line-height:var(--h-touch)}[data-tasks-tree-toggle]{width:var(--h-touch)}.tasksPanel .tasksTitleInput{min-height:var(--h-touch)}}
 .tasksSectionCount{color:var(--muted)}
 .tasksSectionBody{display:grid;gap:var(--s2);padding-top:var(--s2)}
-.tasksLinked{display:grid;gap:var(--s2);border:1px solid var(--line);border-radius:var(--r-control);padding:var(--s3)}
+.tasksLinked{display:grid;gap:var(--s2);border:1px solid var(--line);border-radius:var(--r-tile);padding:var(--s3)}
 .tasksLinkedInfo{display:grid;gap:var(--s1);overflow-wrap:anywhere}
 .tasksLinkedActions{display:flex;gap:var(--s2);flex-wrap:wrap}
 .tasksMaterial{grid-template-columns:auto minmax(0,1fr) auto;align-items:center}

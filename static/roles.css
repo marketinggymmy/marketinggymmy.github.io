@@ -16,7 +16,7 @@ body[data-role="team"] [data-task-plan-post]{display:none}
 body[data-role="pruefer"] :is(.materialSelect,[data-material-scan-all],[data-source="[data-material-scan-all]"],[data-material-ack],[data-material-forget]){display:none}
 body[data-role="pruefer"] .materialCardBody{cursor:default}
 body:is([data-role="team"],[data-role="pruefer"]) :is([data-material-connect],[data-source="[data-material-connect]"],[data-material-connect-hint],.materialSourceActions){display:none}
-.roleNote{font-size:12px;color:var(--warn);background:none;border:1px solid var(--warn);border-radius:999px;padding:var(--s1) var(--s3);white-space:nowrap;text-align:start}
+.roleNote{font-size:12px;color:var(--warn);background:none;border:1px solid var(--warn);border-radius:var(--r-pill);padding:var(--s1) var(--s3);white-space:nowrap;text-align:start}
 /* Am Handy kürzt die Notiz auf 40 % der Breite (block statt flex, damit die Auslassungspunkte greifen) und wird 44 px hoch;
    den vollen Text setzt shell.js als title und zeigt ihn beim Tippen als Toast. Den dunklen Grund auf dem Lichteinfall gibt shell.css. */
 @media(max-width:700px){.roleNote{display:inline-block;max-width:40vw;min-height:var(--h-touch);padding-block:0;line-height:calc(var(--h-touch) - 2px);overflow:hidden;text-overflow:ellipsis}}

@@ -14,7 +14,7 @@
 .reviewTiles{display:grid;grid-template-columns:repeat(auto-fill,minmax(240px,1fr));gap:var(--s4)}
 .reviewTile{display:grid;align-content:start;gap:var(--s2);min-width:0;color:var(--text);font:inherit;text-align:left;cursor:pointer}
 .reviewTile:hover{border-color:var(--line-strong)}
-.reviewThumb{aspect-ratio:16/9;margin-bottom:var(--s1);border-radius:var(--r-control);background:var(--bg-deep);overflow:hidden}
+.reviewThumb{aspect-ratio:16/9;margin-bottom:var(--s1);border-radius:var(--r-tile);background:var(--bg-deep);overflow:hidden}
 .reviewThumb :is(video,img){display:block;width:100%;height:100%;object-fit:cover;pointer-events:none}
 .reviewTileTitle{display:-webkit-box;-webkit-box-orient:vertical;-webkit-line-clamp:2;line-clamp:2;overflow:hidden;font-size:15px;font-weight:600;line-height:1.35;overflow-wrap:anywhere}
 .reviewTileMeta,.reviewTileComments{font-size:12px;color:var(--muted)}
@@ -26,13 +26,13 @@
 .reviewReviewers h2{margin:0;font-size:15px;font-weight:600}
 .reviewError{color:var(--danger);font-size:13px;min-height:1em}
 /* The waiting counter is quiet (no white pill), dark on the green pill, and a dot at the icon when the sidebar is collapsed. */
-span.reviewBadge{margin-left:auto;min-width:20px;height:20px;border-radius:999px;background:var(--surface-2);color:var(--text);font-size:12px;font-weight:600;display:inline-grid;place-items:center;padding:0 var(--s1)}
+span.reviewBadge{margin-left:auto;min-width:20px;height:20px;border-radius:var(--r-pill);background:var(--surface-2);color:var(--text);font-size:12px;font-weight:600;display:inline-grid;place-items:center;padding:0 var(--s1)}
 .navItem.isActive .reviewBadge{background:var(--bg);color:var(--accent)}
 body.sidebarCollapsed .navItem .reviewBadge{display:block;position:absolute;top:var(--s1);right:var(--s1);width:8px;height:8px;min-width:0;padding:0;font-size:0;background:var(--accent)}
 body.sidebarCollapsed .navItem.isActive .reviewBadge{background:var(--bg)}
 .tabBar [data-shell-route="review"]{position:relative}
 .tabBar .reviewBadge{position:absolute;top:var(--s1);left:calc(50% + var(--s2));margin:0}
-.reviewOverlay{position:fixed;inset:0;z-index:60;background:var(--bg);color:var(--text);overflow-y:auto;padding:var(--s4) var(--s5) var(--s6);display:flex;flex-direction:column;gap:var(--s3)}
+.reviewOverlay{position:fixed;inset:0;z-index:60;background:var(--bg-image),var(--bg);background-attachment:fixed;color:var(--text);overflow-y:auto;padding:var(--s4) var(--s5) var(--s6);display:flex;flex-direction:column;gap:var(--s3)}
 body.reviewOpen{overflow:hidden}
 .reviewOverlayHeader{display:flex;align-items:center;gap:var(--s3);flex-wrap:wrap}
 .reviewOverlayHeading{flex:1;min-width:180px}
@@ -49,16 +49,16 @@ body.reviewOpen{overflow:hidden}
 .reviewMedia{position:relative;background:var(--bg-deep);border-radius:var(--r-card);overflow:hidden;display:grid;place-items:center;max-height:62vh}
 .reviewMedia :is(video,img){max-width:100%;max-height:62vh;display:block}
 #reviewCanvas{position:absolute;pointer-events:none;touch-action:none}
-.reviewTimeline{position:relative;height:28px;border-radius:var(--r-control);background:var(--surface);border:1px solid var(--line)}
-.reviewOverlay .reviewMarker{position:absolute;top:3px;height:20px;min-height:20px;width:6px;min-width:6px;padding:0;translate:-50% 0;border-radius:999px;background:var(--warn);border:0}
+.reviewTimeline{position:relative;height:28px;border-radius:var(--r-pill);background:var(--field);border:1px solid var(--line)}
+.reviewOverlay .reviewMarker{position:absolute;top:3px;height:20px;min-height:20px;width:6px;min-width:6px;padding:0;translate:-50% 0;border-radius:var(--r-pill);background:var(--warn);border:0}
 .reviewOverlay .reviewMarkerRange{translate:none;background:color-mix(in srgb,var(--warn) 45%,transparent);border:1px solid var(--warn)}
-.reviewComposer{display:grid;gap:var(--s2);background:var(--surface);border:1px solid var(--line);border-radius:var(--r-card);padding:var(--s3)}
+.reviewComposer{display:grid;gap:var(--s2);background:var(--glass);border:1px solid var(--line);border-radius:var(--r-card);padding:var(--s3)}
 .reviewModes{display:flex;gap:var(--s2);flex-wrap:wrap}
 .reviewAnchor{font-size:13px;color:var(--muted)}
 .reviewComposer textarea{resize:vertical}
 .reviewComments{display:grid;gap:var(--s3);align-content:start;min-width:0}
 .reviewFilters{display:flex;gap:var(--s2)}
-.reviewComment{border:1px solid var(--line);border-radius:var(--r-control);padding:var(--s3);display:grid;gap:var(--s2)}
+.reviewComment{border:1px solid var(--line);border-radius:var(--r-tile);padding:var(--s3);display:grid;gap:var(--s2)}
 .reviewCommentResolved{opacity:.6}
 .reviewCommentHead{display:flex;align-items:center;gap:var(--s2);flex-wrap:wrap;font-size:13px}
 .reviewCommentJump{font-variant-numeric:tabular-nums}
@@ -96,7 +96,7 @@ body.reviewOpen{overflow:hidden}
   /* The comment form follows the comments in the markup too (review.js), so tab order matches what shows. */
   .reviewStage{display:contents}
   .reviewMedia,.reviewMedia :is(video,img){max-height:56dvh}
-  .reviewActions{position:fixed;left:0;right:0;bottom:0;z-index:1;flex-wrap:nowrap;padding:var(--s2) max(var(--s4),env(safe-area-inset-right)) calc(var(--s2) + env(safe-area-inset-bottom)) max(var(--s4),env(safe-area-inset-left));background:var(--surface);border-top:1px solid var(--line)}
+  .reviewActions{position:fixed;left:0;right:0;bottom:0;z-index:1;flex-wrap:nowrap;padding:var(--s2) max(var(--s4),env(safe-area-inset-right)) calc(var(--s2) + env(safe-area-inset-bottom)) max(var(--s4),env(safe-area-inset-left));background:var(--glass-bar);border-top:1px solid var(--line)}
   .reviewActions>.isPrimary{flex:1}
   .reviewOverlay :is(.btn,.field select){min-height:var(--h-touch)}
   .reviewTimeline{overflow-x:clip}
