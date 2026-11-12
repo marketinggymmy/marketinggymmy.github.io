@@ -68,7 +68,7 @@
 .tasksCardMeta{color:var(--muted);font-size:12px;font-weight:500}
 .tasksCardFoot{display:flex;align-items:center;gap:var(--s2)}
 .tasksCardFoot .initial{margin-left:auto}
-.tasksPanel{position:fixed;top:var(--topbar);right:0;bottom:0;width:min(var(--tasks-panel),100vw);overflow-y:auto;background:var(--glass-bar);border-left:1px solid var(--line-strong);padding:var(--s4) max(var(--s5),env(safe-area-inset-right)) var(--s6) var(--s5);z-index:40;display:flex;flex-direction:column;gap:var(--s3);box-shadow:var(--shadow)}
+.tasksPanel{position:fixed;top:var(--topbar);right:0;bottom:0;width:min(var(--tasks-panel),100vw);overflow-y:auto;background:var(--surface);border-left:1px solid var(--line-strong);padding:var(--s4) max(var(--s5),env(safe-area-inset-right)) var(--s6) var(--s5);z-index:40;display:flex;flex-direction:column;gap:var(--s3);box-shadow:var(--shadow)}
 @keyframes tasksPanelIn{from{transform:translateX(100%)}}
 .tasksPanel{animation:tasksPanelIn .2s var(--ease)}
 /* No page fade (cardIn, shell.css) while the panel is open: it would lift the topbar and the tab bar above the phone panel. Duration, not animation:none, so closing does not restart the fade. */

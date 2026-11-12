@@ -58,7 +58,7 @@ body:is([data-active-workspace="transcribe"],[data-active-workspace="subtitles"]
 .tabSheet button{display:flex;align-items:center;gap:var(--s3);min-height:var(--h-touch);padding:0 var(--s3);border:0;border-radius:var(--r-field);background:transparent;color:var(--text);font:inherit;font-size:14px;text-align:left;cursor:pointer}
 .tabSheet button:hover{background:var(--veil)}
 /* Ohne backdrop-filter wären die Leisten über bewegtem Inhalt zu durchsichtig zum Lesen; dann sind sie deckend (Review-Fokus 3). */
-@supports not ((-webkit-backdrop-filter:blur(1px)) or (backdrop-filter:blur(1px))){.topbar,.tabBar::after,.tabSheet{background:var(--surface)}}
+@supports not ((-webkit-backdrop-filter:blur(1px)) or (backdrop-filter:blur(1px))){.topbar,.tabBar::after,.tabSheet,.planningSheet{background:var(--surface)}}
 @media(max-width:700px){
   .sidebar{display:none}
   .appShell{margin-left:0}

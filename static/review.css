@@ -96,7 +96,7 @@ body.reviewOpen{overflow:hidden}
   /* The comment form follows the comments in the markup too (review.js), so tab order matches what shows. */
   .reviewStage{display:contents}
   .reviewMedia,.reviewMedia :is(video,img){max-height:56dvh}
-  .reviewActions{position:fixed;left:0;right:0;bottom:0;z-index:1;flex-wrap:nowrap;padding:var(--s2) max(var(--s4),env(safe-area-inset-right)) calc(var(--s2) + env(safe-area-inset-bottom)) max(var(--s4),env(safe-area-inset-left));background:var(--glass-bar);border-top:1px solid var(--line)}
+  .reviewActions{position:fixed;left:0;right:0;bottom:0;z-index:1;flex-wrap:nowrap;padding:var(--s2) max(var(--s4),env(safe-area-inset-right)) calc(var(--s2) + env(safe-area-inset-bottom)) max(var(--s4),env(safe-area-inset-left));background:var(--surface);border-top:1px solid var(--line)}
   .reviewActions>.isPrimary{flex:1}
   .reviewOverlay :is(.btn,.field select){min-height:var(--h-touch)}
   .reviewTimeline{overflow-x:clip}

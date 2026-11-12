@@ -25,7 +25,7 @@
 .planningTrayItem>.btn{justify-self:start}
 /* A draft reads like a task: its card sits plain inside the entry, Termin setzen below it. */
 .planningTrayItem>.planningPost,.planningTrayItem>.planningPost:hover{padding:0;border:0;border-radius:0;background:none}
-.planningSheet{position:fixed;inset:auto 0 var(--tabbar-space) 0;z-index:31;display:grid;align-content:start;gap:var(--s4);max-height:70dvh;overflow-y:auto;overscroll-behavior:contain;padding:var(--s4);border-top:1px solid var(--line);border-radius:var(--r-dialog) var(--r-dialog) 0 0;background:var(--glass-bar);box-shadow:var(--shadow-bar)}
+.planningSheet{position:fixed;inset:auto 0 var(--tabbar-space) 0;z-index:31;display:grid;align-content:start;gap:var(--s4);max-height:70dvh;overflow-y:auto;overscroll-behavior:contain;padding:var(--s4);border-top:1px solid var(--line);border-radius:var(--r-dialog) var(--r-dialog) 0 0;background:var(--glass-bar);-webkit-backdrop-filter:blur(24px) saturate(1.5);backdrop-filter:blur(24px) saturate(1.5);box-shadow:var(--shadow-bar)}
 .planningCalendar{min-width:0;border:1px solid var(--line);border-radius:var(--r-card);background:var(--glass);box-shadow:var(--shadow-card);overflow:hidden;align-self:start}
 /* The page scrolls, the month has no inner scroll height; the seven days share the width and the box only scrolls sideways below 504 px. */
 .planningCalendarScroll{overflow-x:auto;overflow-y:auto;min-height:320px;min-width:0;overscroll-behavior:contain;scrollbar-color:var(--line-strong) var(--surface)}
