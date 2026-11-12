@@ -32,7 +32,7 @@
 @media(max-width:700px){
   .studio{grid-template-columns:minmax(0,1fr);grid-template-rows:none}
   .studioLibrary{max-height:40dvh;border-right:0;border-bottom:1px solid var(--line)}
-  .studioMain{padding-bottom:calc(64px + var(--s4) + env(safe-area-inset-bottom))}
+  .studioMain{padding-bottom:calc(var(--tabbar-space) + var(--s4))}
 }
 /* Tippflächen 44 px auf Touch (Spec 4.3); am Schreibtisch bleiben die kompakten Höhen, die Bühne rechnet mit ihnen. */
 @media(pointer:coarse){

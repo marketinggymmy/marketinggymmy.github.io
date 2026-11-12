@@ -13,6 +13,21 @@
   const start=me=>['pruefer','kunde','gast'].includes(me?.role)?'review':'today';
   const setWorkspace=name=>window.KlartextEditor?.setWorkspace(name);
   const mark=(button,on)=>{button.classList.toggle('isActive',on);if(on)button.setAttribute('aria-current','page');else button.removeAttribute('aria-current');};
+  // Indikator der Tab-Leiste (Spec 4.6): gleitet beim Seitenwechsel unter den aktiven Punkt; eine neue Breite, Rolle oder das erste Zeigen setzt ihn ohne Übergang.
+  const tabBar=document.querySelector('[data-tab-bar]');
+  const indicator=document.createElement('span');
+  indicator.className='tabBarIndicator';indicator.setAttribute('aria-hidden','true');
+  tabBar?.prepend(indicator);
+  function placeIndicator(glide){
+    const active=tabBar?.querySelector('.tabBarButton.isActive');
+    const shown=!!active?.getClientRects().length;
+    const jump=!glide||!indicator.classList.contains('isShown');
+    indicator.classList.toggle('isJumping',jump);
+    indicator.classList.toggle('isShown',shown);
+    if(shown){const box=active.getBoundingClientRect(),bar=tabBar.getBoundingClientRect();indicator.style.transform=`translateX(${box.left-bar.left}px)`;indicator.style.width=`${box.width}px`;}
+    if(jump){void indicator.offsetWidth;indicator.classList.remove('isJumping');}
+  }
+  if(tabBar){const sizes=new ResizeObserver(()=>placeIndicator(false));tabBar.querySelectorAll('.tabBarButton').forEach(button=>sizes.observe(button));}
   // The more sheet: focus goes in when it opens and back to the tab after Escape.
   function setSheet(open,returnFocus=false){
     if(!sheet||!moreTab)return;
@@ -93,6 +108,7 @@
     renderActions(name);
     document.querySelectorAll('.tabBar [data-shell-route]').forEach(button=>mark(button,button.dataset.shellRoute===route));
     if(moreTab)mark(moreTab,!!sheet?.querySelector(`[data-shell-route="${route}"]`));
+    placeIndicator(true);
     setSheet(false);
     if(more&&more.querySelector(`[data-workspace="${name}"]`))more.open=true;
     if(previewHost){

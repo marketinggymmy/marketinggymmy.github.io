@@ -53,6 +53,8 @@
   --scrim:rgba(0,0,0,0.6);
   --structure-canvas:var(--bg);--structure-panel:var(--surface);--structure-control:var(--surface-2);--structure-selected:var(--surface-hover);--structure-rule:var(--line);--structure-foreground:var(--text);--structure-secondary:var(--muted);--structure-radius:var(--r-card);
   --workspace-gutter:16px;
+  /* Platz unter Inhalten und Toast für die schwebende Tab-Leiste; nur am Handy gesetzt (unten). */
+  --tabbar-space:0px;
   --swatch-text:#ffffff;--swatch-shadow:0 1px 2px rgba(0,0,0,.5);--swatch-on:var(--text);
   color-scheme:dark;font-family:var(--font);font-synthesis:none;font-variant-numeric:tabular-nums;color:var(--text);
 }
@@ -89,7 +91,7 @@ dialog:focus-visible,:is(h1,h2,h3)[tabindex="-1"]:focus-visible{outline:none}
 
 /* Glas-Lichtkante wie ::before der Stempeluhr: ein 1 px Ring aus --glass-edge, ausgestanzt per Maske. Karten ohne blur, nur Verlauf. */
 .card,.btn,.seg,.seg>button{position:relative}
-:is(.card,dialog.dlg,.popover,.btn:not(.isQuiet),.seg,.seg>[aria-pressed="true"])::before{content:"";position:absolute;inset:0;border-radius:inherit;padding:1px;pointer-events:none;background:var(--glass-edge);-webkit-mask:linear-gradient(#000 0 0) content-box,linear-gradient(#000 0 0);-webkit-mask-composite:xor;mask-composite:exclude}
+:is(.card,dialog.dlg,.popover,.btn:not(.isQuiet),.seg,.seg>[aria-pressed="true"],.navItem.isActive,.tabBarIndicator)::before{content:"";position:absolute;inset:0;border-radius:inherit;padding:1px;pointer-events:none;background:var(--glass-edge);-webkit-mask:linear-gradient(#000 0 0) content-box,linear-gradient(#000 0 0);-webkit-mask-composite:xor;mask-composite:exclude}
 
 /* Knopf als Glas-Pill (.pill der Stempeluhr); der Rahmen bleibt durchsichtig für den gewählten Zustand. */
 .btn{display:inline-flex;align-items:center;justify-content:center;gap:var(--s2);min-height:var(--h-control);padding:0 var(--s4);border:1px solid transparent;border-radius:var(--r-pill);background:var(--glass-pill);box-shadow:var(--shadow-pill);color:var(--text);font:inherit;font-size:14px;font-weight:500;line-height:1.2;cursor:pointer;transition:background-color .15s var(--ease),border-color .15s var(--ease),transform .15s var(--ease)}
@@ -189,7 +191,8 @@ dialog.dlg h2{margin:0 0 var(--s4);font-size:20px;font-weight:700}
 /* Toast from toast.js: bottom centre, on phones above the tab bar, in the review overlay above its action bar. */
 .toast{position:fixed;left:50%;bottom:calc(var(--s6) + env(safe-area-inset-bottom));transform:translateX(-50%);z-index:70;display:flex;align-items:center;gap:var(--s3);max-width:calc(100vw - 2*var(--s4) - env(safe-area-inset-left) - env(safe-area-inset-right));padding:var(--s2) var(--s2) var(--s2) var(--s4);border:1px solid transparent;border-radius:var(--r-card);background:var(--glass-bar);-webkit-backdrop-filter:blur(14px);backdrop-filter:blur(14px);color:var(--text);box-shadow:var(--shadow-bar);font-size:14px;line-height:1.45}
 .toast[data-tone="error"]{color:var(--danger-text)}
-@media(max-width:700px){.toast{bottom:calc(64px + var(--s3) + env(safe-area-inset-bottom))}body.reviewOpen .toast{bottom:calc(72px + var(--s3) + env(safe-area-inset-bottom))}}
+/* Die Tab-Leiste schwebt 12 px über dem Rand und ist 64 px hoch (shell.css). */
+@media(max-width:700px){:root{--tabbar-space:calc(64px + var(--s3) + env(safe-area-inset-bottom))}.toast{bottom:calc(var(--tabbar-space) + var(--s3))}body.reviewOpen .toast{bottom:calc(72px + var(--s3) + env(safe-area-inset-bottom))}}
 
 .emptyState{display:grid;justify-items:center;gap:var(--s2);padding:var(--s6) var(--s4);text-align:center;color:var(--muted);font-size:14px;line-height:1.45}
 .emptyState .emptyStateIcon{width:40px;height:40px;display:grid;place-items:center;border:1px solid var(--line);border-radius:50%;background:var(--glass-pill);color:var(--text)}
@@ -203,3 +206,5 @@ dialog.dlg h2{margin:0 0 var(--s4);font-size:20px;font-weight:700}
 /* The one reduced-motion guard for every page, the studio included. */
 @media (prefers-reduced-motion: reduce){html{scroll-behavior:auto}*,*::before,*::after{animation:none!important;transition:none!important}}
 @media(pointer:coarse){.btn,.seg>button,.popover button,.check,.field :is(input:not([type=file]),select,textarea){min-height:var(--h-touch)}}
+/* Ohne backdrop-filter sind Dialog und Toast deckend, damit Text über bewegtem Inhalt lesbar bleibt (Review-Fokus 3). */
+@supports not ((-webkit-backdrop-filter:blur(1px)) or (backdrop-filter:blur(1px))){dialog.dlg,.toast{background:var(--surface)}}
